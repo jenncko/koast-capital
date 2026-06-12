@@ -10,14 +10,14 @@ export default function Footer() {
     <footer className="pt-6 pb-5" style={{ backgroundColor: '#756C5F' }}>
       <div className="container-xl">
 
-        <div className="grid md:grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-4 md:mb-6">
 
-          {/* Brand */}
-          <div>
+          {/* Brand — full-width row on mobile, one column on desktop */}
+          <div className="col-span-2 md:col-span-1">
             <a href="#" className="font-serif text-base font-light tracking-[0.12em] text-cream uppercase block mb-3">
               Koast Capital
             </a>
-            <p className="font-serif font-light text-cream/60 text-xs leading-relaxed max-w-[240px]">
+            <p className="font-serif font-light text-cream/60 text-xs leading-relaxed md:max-w-[240px]">
               Personal mortgage advisory for homeowners, self-employed borrowers, and real estate investors across the Western United States in CA, NV, AZ and WA.
             </p>
           </div>
