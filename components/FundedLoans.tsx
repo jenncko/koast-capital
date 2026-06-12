@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const loans = [
   {
@@ -93,7 +93,7 @@ const loans = [
     tag: 'Hard Money · Fix & Flip',
     amount: '$580,000',
     description:
-      'Distressed property acquisition requiring fast close. Funded in 9 days — well ahead of the seller\'s deadline.',
+      "Distressed property acquisition requiring fast close. Funded in 9 days — well ahead of the seller's deadline.",
   },
   {
     image: '/funded-11.jpg',
@@ -115,15 +115,11 @@ const loans = [
   },
 ]
 
-/* Shared horizontal inset: max-w-1200px centered + 48px padding on each side.
-   On viewports wider than 1200px the auto-margin kicks in, so we add it back
-   to keep the scroll track edge-aligned with the container content. */
 const INSET = 'max(24px, calc((100vw - 1400px) / 2))'
 
 export default function FundedLoans() {
-  const sectionRef = useRef(null)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const inView = useInView(sectionRef, { once: true, amount: 0.1 })
+
   const scroll = (dir: 'prev' | 'next') => {
     const el = scrollRef.current
     if (!el) return
@@ -131,22 +127,21 @@ export default function FundedLoans() {
   }
 
   return (
-    <section id="funded" className="py-24 overflow-hidden" style={{ backgroundColor: '#F1EBE3' }}>
+    <section id="funded" className="py-16 lg:py-24 overflow-x-hidden" style={{ backgroundColor: '#F1EBE3' }}>
 
-      {/* ── Aman-style: left panel + scroll track side by side ── */}
       <div
-        ref={sectionRef}
-        className="flex items-start"
+        className="flex flex-col lg:flex-row lg:items-start"
         style={{ paddingLeft: INSET }}
       >
 
         {/* Left panel */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.9 }}
-          className="flex-shrink-0 flex flex-col justify-between pr-12 lg:pr-16"
-          style={{ width: '440px', paddingTop: '4px' }}
+          className="w-full lg:w-[440px] lg:flex-shrink-0 flex flex-col justify-between pb-10 lg:pb-0 pr-6 lg:pr-12 xl:pr-16"
+          style={{ paddingTop: '4px' }}
         >
           <div>
             <p className="eyebrow mb-5">Funded Loans</p>
@@ -161,7 +156,7 @@ export default function FundedLoans() {
             </p>
           </div>
 
-          <div className="mt-12">
+          <div className="hidden lg:block mt-12">
             <p className="eyebrow text-charcoal/25 mb-6">scroll to explore</p>
             <div className="flex items-center gap-4">
               <button
@@ -191,74 +186,74 @@ export default function FundedLoans() {
           </div>
         </motion.div>
 
-        {/* ── Horizontal scroll track ── */}
+        {/* Scroll track — horizontal on desktop, vertical stack on mobile */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.01 }}
           transition={{ duration: 0.9, delay: 0.15 }}
           ref={scrollRef}
-          className="scrollbar-hide flex gap-6 overflow-x-auto flex-1"
+          className="scrollbar-hide flex flex-col gap-6 lg:flex-row lg:gap-6 lg:overflow-x-auto lg:flex-1"
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
             paddingRight: INSET,
           }}
         >
-        {loans.map((loan, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 w-[300px] lg:w-[360px] flex flex-col pb-2"
-            style={{ scrollSnapAlign: 'start' }}
-          >
-            {/* Image */}
+          {loans.map((loan, i) => (
             <div
-              className="relative w-full mb-6 flex-shrink-0"
-              style={{ height: '300px', background: loan.fallback }}
+              key={i}
+              className="w-full lg:flex-shrink-0 lg:w-[300px] xl:w-[360px] flex flex-col pb-2"
+              style={{ scrollSnapAlign: 'start' }}
             >
-              <Image
-                src={loan.image}
-                alt={`Funded loan — ${loan.location}`}
-                fill
-                className="object-cover"
-              />
-            </div>
+              {/* Image */}
+              <div
+                className="relative w-full mb-6 flex-shrink-0"
+                style={{ height: '300px', background: loan.fallback }}
+              >
+                <Image
+                  src={loan.image}
+                  alt={`Funded loan — ${loan.location}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
 
-            {/* Text */}
-            <div className="flex flex-col flex-1">
-              <p className="eyebrow text-sage mb-1.5">{loan.location}</p>
-              <p className="eyebrow text-charcoal/35 mb-4">{loan.tag}</p>
-              <p
-                className="font-serif font-light text-charcoal leading-none"
-                style={{ fontSize: 'clamp(26px, 3vw, 34px)' }}
-              >
-                <span className="font-sans font-light">$</span>
-                {loan.amount.replace('$', '')}
-              </p>
-              <p className="eyebrow text-charcoal/25 mt-1.5 mb-4">Loan Amount</p>
-              <div className="h-px bg-charcoal/8 mb-4" />
-              <p className="font-sans font-light text-mid text-sm leading-relaxed flex-1">
-                {loan.description}
-              </p>
-              <a
-                href="#book"
-                className="mt-6 eyebrow text-charcoal/35 hover:text-sage transition-colors duration-200 flex items-center gap-2 group"
-              >
-                View Scenario
-                <svg
-                  width="12" height="12" viewBox="0 0 12 12" fill="none"
-                  stroke="currentColor" strokeWidth="1" strokeLinecap="round"
-                  className="group-hover:translate-x-0.5 transition-transform duration-200"
+              {/* Text */}
+              <div className="flex flex-col flex-1">
+                <p className="eyebrow text-sage mb-1.5">{loan.location}</p>
+                <p className="eyebrow text-charcoal/35 mb-4">{loan.tag}</p>
+                <p
+                  className="font-serif font-light text-charcoal leading-none"
+                  style={{ fontSize: 'clamp(26px, 3vw, 34px)' }}
                 >
-                  <path d="M2 6h8M6 2l4 4-4 4" />
-                </svg>
-              </a>
+                  <span className="font-sans font-light">$</span>
+                  {loan.amount.replace('$', '')}
+                </p>
+                <p className="eyebrow text-charcoal/25 mt-1.5 mb-4">Loan Amount</p>
+                <div className="h-px bg-charcoal/8 mb-4" />
+                <p className="font-sans font-light text-mid text-sm leading-relaxed flex-1">
+                  {loan.description}
+                </p>
+                <a
+                  href="#book"
+                  className="mt-6 eyebrow text-charcoal/35 hover:text-sage transition-colors duration-200 flex items-center gap-2 group"
+                >
+                  View Scenario
+                  <svg
+                    width="12" height="12" viewBox="0 0 12 12" fill="none"
+                    stroke="currentColor" strokeWidth="1" strokeLinecap="round"
+                    className="group-hover:translate-x-0.5 transition-transform duration-200"
+                  >
+                    <path d="M2 6h8M6 2l4 4-4 4" />
+                  </svg>
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         </motion.div>
 
       </div>
-
 
     </section>
   )

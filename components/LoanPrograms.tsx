@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const programs = [
   {
@@ -68,28 +67,24 @@ const programs = [
 ]
 
 export default function LoanPrograms() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.1 })
-
   const INSET = 'max(24px, calc((100vw - 1400px) / 2))'
 
   return (
-    <section id="programs" className="py-24 overflow-hidden" style={{ backgroundColor: '#EBE5DC' }}>
+    <section id="programs" className="py-16 lg:py-24 overflow-x-hidden" style={{ backgroundColor: '#EBE5DC' }}>
 
-      {/* ── Aman-style: left panel + card grid ── */}
       <div
-        ref={ref}
-        className="flex items-start gap-0"
+        className="flex flex-col lg:flex-row lg:items-start"
         style={{ paddingLeft: INSET }}
       >
 
         {/* Left panel */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.9 }}
-          className="flex-shrink-0 pr-12 lg:pr-16"
-          style={{ width: '440px', paddingTop: '4px' }}
+          className="w-full lg:w-[440px] lg:flex-shrink-0 pb-8 lg:pb-0 pr-6 lg:pr-12 xl:pr-16"
+          style={{ paddingTop: '4px' }}
         >
           <p className="eyebrow mb-5">Loan Programs</p>
           <div className="h-px bg-charcoal/10 mb-6" />
@@ -103,21 +98,23 @@ export default function LoanPrograms() {
         </motion.div>
 
         {/* Programs grid */}
-        <div className="flex-1 grid md:grid-cols-2 gap-px bg-charcoal/8" style={{ paddingRight: INSET }}>
+        <div
+          className="w-full lg:flex-1 grid grid-cols-1 md:grid-cols-2 gap-px"
+          style={{ backgroundColor: 'rgba(56,51,46,0.08)', paddingRight: INSET }}
+        >
           {programs.map((prog, i) => (
             <motion.div
               key={prog.name}
               initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.09 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
               whileHover={{ y: -3, boxShadow: prog.dark
                 ? '0 8px 32px rgba(56,51,46,0.28)'
                 : '0 8px 32px rgba(56,51,46,0.08)'
               }}
-              style={{ backgroundColor: prog.dark ? '#756C5F' : undefined }}
-              className={`relative p-6 xl:p-8 group transition-shadow duration-300 cursor-default ${
-                prog.dark ? '' : 'bg-cream'
-              }`}
+              style={{ backgroundColor: prog.dark ? '#756C5F' : '#EBE5DC' }}
+              className="relative p-6 xl:p-8 group transition-shadow duration-300 cursor-default"
             >
               <p className={`eyebrow mb-4 ${prog.dark ? 'text-cream/70' : 'text-charcoal/40'}`}>
                 {prog.tag}
