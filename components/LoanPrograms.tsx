@@ -35,15 +35,15 @@ const programs = [
   },
   {
     name: 'No Ratio',
-    tag: 'Asset-Based Qualifying',
-    body: "No income, no employment verification. Qualify on assets alone — designed for high-net-worth borrowers whose financial picture doesn't fit a traditional mold.",
+    tag: 'Equity-Based Financing',
+    body: "Designed for borrowers with significant equity and overall financial strength, No Ratio financing provides an alternative to traditional income-based qualification. An ideal solution for retirees, investors, and homeowners whose financial picture extends beyond conventional employment income.",
     dark: false,
   },
   {
     name: 'Hard Money / Bridge Loan /',
     line2: 'Fix & Flip',
     tag: 'Short-Term Financing',
-    body: 'Fast, asset-based lending for fix-and-flip projects, distressed properties, or time-sensitive acquisitions where speed matters more than rate.',
+    body: "Not every financing need can wait 30 days. Hard Money and Bridge Loan solutions provide fast access to capital for borrowers with significant equity, unique credit situations, or time-sensitive opportunities that require a flexible approach.",
     dark: false,
   },
   {
@@ -55,13 +55,13 @@ const programs = [
   {
     name: 'Reverse Mortgage (HECM)',
     tag: 'Retirement Planning',
-    body: 'A government-insured program allowing homeowners 62+ to convert home equity into tax-free funds — with no required monthly mortgage payment.',
+    body: "Unlock the equity you've built over a lifetime. A Reverse Mortgage provides homeowners age 62+ with access to tax-free funds while eliminating the obligation of a required monthly mortgage payment.",
     dark: true,
   },
   {
     name: 'Foreign National',
     tag: 'International Buyers',
-    body: 'Financing for non-US citizens and non-permanent residents purchasing or investing in US real estate. No SSN required.',
+    body: "Financing solutions for international investors seeking opportunities in U.S. real estate. Designed for non-U.S. citizens and non-permanent residents, with flexible documentation requirements.",
     dark: false,
   },
 ]
