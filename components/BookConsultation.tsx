@@ -25,6 +25,8 @@ export default function BookConsultation() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -42,9 +44,35 @@ export default function BookConsultation() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'f0464cbf-21a9-4d93-bee1-dc2497bec7c4',
+          subject: 'New Consultation Request — Koast Capital',
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          goal: goalOptions.find(o => o.value === form.goal)?.label ?? form.goal,
+          message: form.message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again or email info@koastcapital.com.')
+      }
+    } catch {
+      setError('Something went wrong. Please try again or email info@koastcapital.com.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -284,11 +312,15 @@ export default function BookConsultation() {
                 <div className="pt-2">
                   <button
                     type="submit"
+                    disabled={loading}
                     style={{ backgroundColor: '#756C5F' }}
-                    className="w-full py-4 text-cream eyebrow hover:bg-sage hover:text-charcoal transition-all duration-400"
+                    className="w-full py-4 text-cream eyebrow hover:bg-sage hover:text-charcoal transition-all duration-400 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Start the Conversation
+                    {loading ? 'Sending…' : 'Start the Conversation'}
                   </button>
+                  {error && (
+                    <p className="eyebrow text-dusty-pink text-center mt-3">{error}</p>
+                  )}
                   <p className="eyebrow text-charcoal/20 text-center mt-5">
                     Your information is kept strictly confidential.
                   </p>
