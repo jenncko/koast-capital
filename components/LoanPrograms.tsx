@@ -20,13 +20,13 @@ const programs = [
     name: 'Jumbo',
     tag: 'High-Value Properties',
     body: 'Tailored for luxury homes and higher loan amounts that exceed conventional lending limits. Jumbo financing offers customized solutions for borrowers purchasing premium properties or refinancing substantial mortgage balances.',
-    dark: false,
+    dark: true,
   },
   {
     name: 'Bank Statement / P&L / VOE',
     tag: 'Self-Employed · Alternative Income',
     body: 'Alternative income documentation using 12 or 24 months of bank statements, a CPA-prepared P&L, or verification of employment. Designed for entrepreneurs, freelancers, and independent professionals.',
-    dark: true,
+    dark: false,
   },
   {
     name: 'Debt Service Coverage Ratio (DSCR)',
@@ -41,17 +41,16 @@ const programs = [
     dark: false,
   },
   {
-    name: 'Hard Money / Bridge Loan /',
-    line2: 'Fix & Flip',
+    name: 'Hard Money / Bridge Loan / Fix & Flip',
     tag: 'Short-Term Financing',
     body: 'Not every financing need can wait 30 days. Hard Money and Bridge Loan solutions provide fast access to capital for borrowers with significant equity, unique credit situations, or time-sensitive opportunities that require a flexible approach.',
-    dark: false,
+    dark: true,
   },
   {
     name: 'HELOC / HELOAN',
     tag: 'Home Equity Solutions',
     body: "Access your home's equity through a flexible line of credit or a lump-sum loan. Ideal for renovations, investments, or strategic debt consolidation.",
-    dark: true,
+    dark: false,
   },
   {
     name: 'Reverse Mortgage (HECM)',
@@ -107,7 +106,7 @@ export default function LoanPrograms() {
             </h2>
           </div>
 
-          <div className="hidden lg:block mt-12">
+          <div className="mt-6 lg:mt-12">
             <p className="eyebrow text-charcoal/25 mb-6">scroll to explore</p>
             <div className="flex items-center gap-4">
               <button
@@ -150,7 +149,7 @@ export default function LoanPrograms() {
           viewport={{ once: true, amount: 0.01 }}
           transition={{ duration: 0.9, delay: 0.15 }}
           ref={scrollRef}
-          className="scrollbar-hide flex flex-col gap-5 lg:flex-row lg:gap-5 lg:overflow-x-auto lg:flex-1"
+          className="scrollbar-hide flex flex-row gap-5 overflow-x-auto lg:flex-1"
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
@@ -160,7 +159,7 @@ export default function LoanPrograms() {
           {programs.map((prog) => (
             <div
               key={prog.name}
-              className="w-full lg:flex-shrink-0 lg:w-[300px] xl:w-[340px]"
+              className="flex-shrink-0 w-[80vw] lg:w-[300px] xl:w-[340px]"
               style={{ scrollSnapAlign: 'start' }}
             >
               <motion.div
@@ -183,7 +182,6 @@ export default function LoanPrograms() {
                   style={{ fontSize: 'clamp(22px, 2vw, 28px)' }}
                 >
                   {prog.name}
-                  {'line2' in prog && prog.line2 && <><br />{prog.line2}</>}
                 </h3>
 
                 {/* Divider */}

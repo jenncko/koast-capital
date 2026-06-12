@@ -103,7 +103,7 @@ export default function ClientReviews() {
             </p>
           </div>
 
-          <div className="hidden lg:block mt-8">
+          <div className="mt-6 lg:mt-8">
             <p className="eyebrow text-cream/20 mb-4">scroll to explore</p>
             <div className="flex items-center gap-4">
               <button
@@ -146,7 +146,7 @@ export default function ClientReviews() {
           viewport={{ once: true, amount: 0.01 }}
           transition={{ duration: 0.9, delay: 0.15 }}
           ref={scrollRef}
-          className="scrollbar-hide flex flex-col gap-5 lg:flex-row lg:gap-5 lg:overflow-x-auto lg:flex-1"
+          className="scrollbar-hide flex flex-row gap-5 overflow-x-auto lg:flex-1"
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
@@ -156,7 +156,7 @@ export default function ClientReviews() {
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="w-full lg:flex-shrink-0 lg:w-[360px] xl:w-[400px]"
+              className="flex-shrink-0 w-[80vw] lg:w-[360px] xl:w-[400px]"
               style={{ scrollSnapAlign: 'start' }}
             >
               <div

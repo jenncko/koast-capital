@@ -156,7 +156,7 @@ export default function FundedLoans() {
             </p>
           </div>
 
-          <div className="hidden lg:block mt-12">
+          <div className="mt-6 lg:mt-12">
             <p className="eyebrow text-charcoal/25 mb-6">scroll to explore</p>
             <div className="flex items-center gap-4">
               <button
@@ -193,7 +193,7 @@ export default function FundedLoans() {
           viewport={{ once: true, amount: 0.01 }}
           transition={{ duration: 0.9, delay: 0.15 }}
           ref={scrollRef}
-          className="scrollbar-hide flex flex-col gap-6 lg:flex-row lg:gap-6 lg:overflow-x-auto lg:flex-1"
+          className="scrollbar-hide flex flex-row gap-6 overflow-x-auto lg:flex-1"
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
@@ -203,7 +203,7 @@ export default function FundedLoans() {
           {loans.map((loan, i) => (
             <div
               key={i}
-              className="w-full lg:flex-shrink-0 lg:w-[300px] xl:w-[360px] flex flex-col pb-2"
+              className="flex-shrink-0 w-[80vw] lg:w-[300px] xl:w-[360px] flex flex-col pb-2"
               style={{ scrollSnapAlign: 'start' }}
             >
               {/* Image */}
