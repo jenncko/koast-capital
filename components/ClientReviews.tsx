@@ -25,7 +25,7 @@ const reviews = [
   },
   {
     quote:
-      "Jennifer guided us through the purchase of our first investment property with patience and real expertise. She found a DSCR solution that fit our situation perfectly.",
+      'Jennifer guided us through the purchase of our first investment property with patience and real expertise. She found a DSCR solution that fit our situation perfectly.',
     reviewer: 'R. & C. Kim',
     location: 'Las Vegas, NV',
     loanType: 'DSCR · Purchase',
@@ -69,7 +69,7 @@ export default function ClientReviews() {
   }
 
   return (
-    <section id="reviews" className="py-16 lg:py-24 overflow-x-hidden" style={{ backgroundColor: '#38332E' }}>
+    <section id="reviews" className="py-10 lg:py-16 overflow-x-hidden" style={{ backgroundColor: '#38332E' }}>
 
       <div
         className="flex flex-col lg:flex-row lg:items-start"
@@ -82,29 +82,29 @@ export default function ClientReviews() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.9 }}
-          className="w-full lg:w-[440px] lg:flex-shrink-0 flex flex-col justify-between pb-10 lg:pb-0 pr-6 lg:pr-12 xl:pr-16"
+          className="w-full lg:w-[440px] lg:flex-shrink-0 flex flex-col justify-between pb-6 lg:pb-0 pr-6 lg:pr-12 xl:pr-16"
           style={{ paddingTop: '4px' }}
         >
           <div>
-            <p className="eyebrow text-cream/40 mb-5">Client Reviews</p>
-            <div className="h-px bg-cream/10 mb-6" />
+            <p className="eyebrow text-cream/40 mb-3">Client Reviews</p>
+            <div className="h-px bg-cream/10 mb-4" />
             <h2
-              className="font-serif font-light text-cream leading-tight mb-6"
-              style={{ fontSize: 'clamp(28px, 3vw, 42px)' }}
+              className="font-serif font-light text-cream leading-tight mb-4"
+              style={{ fontSize: 'clamp(24px, 2.5vw, 34px)' }}
             >
               What Clients Say<br />
               <em>About Jennifer.</em>
             </h2>
             <p
               className="font-serif font-light text-cream/50 leading-relaxed"
-              style={{ fontSize: '15px', lineHeight: '1.8' }}
+              style={{ fontSize: '14px', lineHeight: '1.7' }}
             >
               Real feedback from homeowners, investors, and borrowers Jennifer has had the privilege of guiding through their financing journey.
             </p>
           </div>
 
-          <div className="hidden lg:block mt-12">
-            <p className="eyebrow text-cream/20 mb-6">scroll to explore</p>
+          <div className="hidden lg:block mt-8">
+            <p className="eyebrow text-cream/20 mb-4">scroll to explore</p>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => scroll('prev')}
@@ -146,7 +146,7 @@ export default function ClientReviews() {
           viewport={{ once: true, amount: 0.01 }}
           transition={{ duration: 0.9, delay: 0.15 }}
           ref={scrollRef}
-          className="scrollbar-hide flex flex-col gap-6 lg:flex-row lg:gap-6 lg:overflow-x-auto lg:flex-1"
+          className="scrollbar-hide flex flex-col gap-5 lg:flex-row lg:gap-5 lg:overflow-x-auto lg:flex-1"
           style={{
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
@@ -160,36 +160,36 @@ export default function ClientReviews() {
               style={{ scrollSnapAlign: 'start' }}
             >
               <div
-                className="flex flex-col p-8 border border-cream/10"
-                style={{ backgroundColor: 'rgba(255,255,255,0.04)', minHeight: '320px' }}
+                className="flex flex-col p-5 border border-cream/10"
+                style={{ backgroundColor: 'rgba(255,255,255,0.04)', minHeight: '240px' }}
               >
                 {/* Decorative opening quote mark */}
                 <div
-                  className="font-serif leading-none select-none -mb-4 -ml-1"
-                  style={{ fontSize: '96px', color: '#A8B08E', opacity: 0.2 }}
+                  className="font-serif leading-none select-none -mb-2 -ml-1"
+                  style={{ fontSize: '62px', color: '#A8B08E', opacity: 0.2 }}
                   aria-hidden="true"
                 >
                   &ldquo;
                 </div>
 
-                {/* Quote — main focus */}
+                {/* Quote — main focus, clamped for editorial uniformity */}
                 <p
-                  className="font-serif font-light text-cream/80 flex-1"
-                  style={{ fontSize: 'clamp(15px, 1.3vw, 18px)', lineHeight: '1.85' }}
+                  className="font-serif font-light text-cream/80 flex-1 line-clamp-4"
+                  style={{ fontSize: 'clamp(13px, 1.1vw, 15px)', lineHeight: '1.65' }}
                 >
                   {review.quote}
                 </p>
 
                 {/* Card footer */}
-                <div className="mt-8">
-                  <div className="h-px bg-cream/10 mb-5" />
+                <div className="mt-5">
+                  <div className="h-px bg-cream/10 mb-3" />
 
-                  <p className="font-serif font-light text-cream" style={{ fontSize: '15px' }}>
+                  <p className="font-serif font-light text-cream" style={{ fontSize: '14px' }}>
                     {review.reviewer}
                   </p>
 
                   {(review.location || review.loanType) && (
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1.5">
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1">
                       {review.location && (
                         <span className="eyebrow text-cream/35">{review.location}</span>
                       )}
@@ -202,7 +202,7 @@ export default function ClientReviews() {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-2 mt-4">
+                  <div className="flex items-center gap-2 mt-2.5">
                     <svg
                       width="10" height="10" viewBox="0 0 10 10" fill="none"
                       stroke="#A8B08E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
