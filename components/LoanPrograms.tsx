@@ -6,19 +6,19 @@ const programs = [
   {
     name: 'Conventional',
     tag: 'Purchase · Refinance',
-    body: 'Conforming loans with competitive rates and flexible terms. A straightforward path for borrowers with strong credit and documented income.',
+    body: 'Ideal for borrowers with documented income, strong credit, and long-term homeownership goals. Conventional financing often provides the most competitive rates and flexible options for primary residences, second homes, and investment properties.',
     dark: true,
   },
   {
     name: 'FHA / VA',
     tag: 'Government Programs',
-    body: 'Low down payment options and veteran benefits, executed with the same care and precision as every Koast Capital loan.',
+    body: 'Designed to make homeownership more accessible, FHA and VA financing offer flexible pathways for qualified buyers. Whether you\'re purchasing your first home, seeking a lower down payment option, or utilizing earned military benefits, these programs can provide greater affordability and expanded opportunities to achieve your homeownership goals.',
     dark: false,
   },
   {
     name: 'Jumbo',
     tag: 'High-Value Properties',
-    body: 'Financing above conforming limits for luxury and high-value properties. Competitive rates, discreet handling, and an advisor who understands this market.',
+    body: 'Tailored for luxury homes and higher loan amounts that exceed conventional lending limits. Jumbo financing offers customized solutions for borrowers purchasing premium properties or refinancing substantial mortgage balances.',
     dark: false,
   },
   {
@@ -30,7 +30,7 @@ const programs = [
   {
     name: 'DSCR Investor',
     tag: 'Real Estate Investors',
-    body: "Qualify based on the property's rental income — not your personal income. Ideal for scaling a portfolio without affecting your DTI.",
+    body: "Built for real estate investors, DSCR financing focuses on a property's rental income rather than personal income documentation. A popular solution for expanding a portfolio without relying on tax returns or traditional debt-to-income calculations.",
     dark: true,
   },
   {
