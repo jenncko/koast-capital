@@ -18,9 +18,9 @@ const jost = Jost({
 })
 
 export const metadata: Metadata = {
-  title: 'Koast Capital | Jennifer Ko | Boutique Mortgage Advisor',
+  title: 'Jennifer Ko | Koast Capital | Personal Mortgage Advisory',
   description:
-    'Personalized mortgage guidance for homebuyers, self-employed borrowers, and real estate investors across California, Nevada, Arizona, and Washington.',
+    'Jennifer Ko is the founder of Koast Capital and a personal mortgage advisor serving California, Nevada, Arizona, and Washington. Specializing in home purchases, refinancing, jumbo, DSCR, bank statement, bridge financing, HELOCs, and investor loans.',
   icons: {
     icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
     apple: [{ url: '/icon.svg', type: 'image/svg+xml' }],
