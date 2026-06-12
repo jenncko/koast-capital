@@ -59,7 +59,7 @@ export default function Footer() {
 
         {/* NMLS disclosure */}
         <p className="font-sans font-light text-[11px] text-cream/30 leading-relaxed mb-3">
-          Jennifer Ko | NMLS 2478721 | CA DRE 02411618 | Koast Capital. Licensed in the States of California, Nevada, Arizona, and Washington. This is not a commitment to lend.<br />
+          Jennifer Ko | NMLS 2478721 | CA DRE 02411638 | Koast Capital. Licensed in the States of California, Nevada, Arizona, and Washington. This is not a commitment to lend.<br />
           All loans are subject to credit and property approval. Programs, rates, terms, and conditions are subject to change without notice. Equal Housing Opportunity Lender.
         </p>
 
