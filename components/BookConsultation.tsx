@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const goalOptions = [
   { value: 'purchase',   label: 'Purchase a Home' },
@@ -14,9 +14,6 @@ const goalOptions = [
 ]
 
 export default function BookConsultation() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.1 })
-
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -79,7 +76,7 @@ export default function BookConsultation() {
     <section id="book" style={{ backgroundColor: '#E6DFD5' }}>
 
       {/* ── Full-screen title ── */}
-      <div className="relative min-h-screen overflow-hidden">
+      <div className="relative min-h-screen overflow-x-hidden">
 
         {/* Background */}
         <div
@@ -90,10 +87,11 @@ export default function BookConsultation() {
         </div>
         <div className="absolute inset-0 bg-charcoal/45" />
 
-        <div ref={ref} className="relative z-10 min-h-screen flex flex-col justify-end items-end mx-auto px-8 lg:px-16 pt-32 pb-20 w-full" style={{ maxWidth: '1200px' }}>
+        <div className="relative z-10 min-h-screen flex flex-col justify-end items-end mx-auto px-8 lg:px-16 pt-32 pb-20 w-full" style={{ maxWidth: '1200px' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8 }}
           className="mb-8 flex items-center gap-6 w-full max-w-xl"
         >
@@ -103,7 +101,8 @@ export default function BookConsultation() {
 
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="font-serif font-light text-cream leading-[1.05] max-w-xl text-right"
           style={{ fontSize: 'clamp(42px, 6vw, 96px)' }}
@@ -115,7 +114,8 @@ export default function BookConsultation() {
         {/* Scroll nudge */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-16 flex items-center gap-4 justify-end"
         >
@@ -136,7 +136,8 @@ export default function BookConsultation() {
           {/* Left — info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="h-px w-14 bg-dusty-pink mb-8" />
@@ -187,7 +188,8 @@ export default function BookConsultation() {
           {/* Right — form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="lg:pr-8 xl:pr-16"
           >
@@ -199,7 +201,7 @@ export default function BookConsultation() {
                   </svg>
                 </div>
                 <p className="font-serif text-2xl font-light text-charcoal mb-3">Thank you.</p>
-                <p className="font-serif font-light text-mid text-[15px] leading-relaxed">
+                <p className="font-serif font-light text-mid text-base sm:text-[15px] leading-relaxed">
                   Jennifer will be in touch within one business day.
                 </p>
               </div>
@@ -215,7 +217,7 @@ export default function BookConsultation() {
                       onChange={handleChange}
                       required
                       placeholder="Your full name"
-                      className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300"
+                      className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-base sm:text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300"
                     />
                   </div>
                   <div>
@@ -227,7 +229,7 @@ export default function BookConsultation() {
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="(310) 555-0000"
-                      className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300"
+                      className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-base sm:text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300"
                     />
                   </div>
                 </div>
@@ -241,7 +243,7 @@ export default function BookConsultation() {
                     onChange={handleChange}
                     required
                     placeholder="your@email.com"
-                    className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300"
+                    className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-base sm:text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300"
                   />
                 </div>
 
@@ -250,7 +252,7 @@ export default function BookConsultation() {
                   <button
                     type="button"
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className={`w-full flex items-center justify-between border-b py-3 text-[15px] font-serif font-light text-left transition-colors duration-300 ${
+                    className={`w-full flex items-center justify-between border-b py-3 text-base sm:text-[15px] font-serif font-light text-left transition-colors duration-300 ${
                       dropdownOpen ? 'border-sage' : 'border-charcoal/15'
                     } ${form.goal ? 'text-charcoal' : 'text-charcoal/30'}`}
                   >
@@ -282,7 +284,7 @@ export default function BookConsultation() {
                                 setForm({ ...form, goal: opt.value })
                                 setDropdownOpen(false)
                               }}
-                              className={`w-full text-left px-5 py-3 font-serif font-light text-[15px] transition-colors duration-150 ${
+                              className={`w-full text-left px-5 py-3 font-serif font-light text-base sm:text-[15px] transition-colors duration-150 ${
                                 form.goal === opt.value
                                   ? 'text-charcoal'
                                   : 'text-mid hover:text-charcoal hover:bg-charcoal/5'
@@ -305,7 +307,7 @@ export default function BookConsultation() {
                     onChange={handleChange}
                     rows={5}
                     placeholder="Tell me a little about your situation, timeline, or what you're hoping to accomplish..."
-                    className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300 resize-none"
+                    className="w-full bg-transparent border-b border-charcoal/15 text-charcoal placeholder-charcoal/20 py-3 text-base sm:text-[15px] font-serif font-light focus:outline-none focus:border-sage transition-colors duration-300 resize-none"
                   />
                 </div>
 
