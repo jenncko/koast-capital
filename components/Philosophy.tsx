@@ -29,13 +29,13 @@ export default function Philosophy() {
                 genuinely consultative approach — no pressure, no scripts, no generic checklists.
               </p>
               <p>
-                Whether you're navigating your first purchase or expanding an investment
-                portfolio, we take the time to understand your full picture before
-                recommending a single product.
+                Whether you&apos;re navigating your first purchase or expanding an investment
+		portfolio, we take the time to understand your full picture before
+		recommending a single product.
               </p>
               <p className="font-serif text-xl italic text-dark pt-2">
-                "Every client is a conversation,<br />not a transaction."
-              </p>
+  &ldquo;Every client is a conversation,<br />not a transaction.&rdquo;
+</p>
             </div>
 
             <div className="mt-10 flex items-center gap-5">
