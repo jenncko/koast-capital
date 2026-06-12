@@ -50,6 +50,7 @@ export default function Footer() {
               </a>
               <p className="font-serif font-light text-cream/60 text-xs">NMLS 2478721</p>
               <p className="font-serif font-light text-cream/60 text-xs">CA DRE 02411638</p>
+              <p className="font-serif font-light text-cream/60 text-xs">NV RED S.0204930</p>
             </div>
           </div>
 

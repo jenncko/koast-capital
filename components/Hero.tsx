@@ -42,8 +42,8 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
 
       {/* ── Content — bottom anchored ──────────────────────────────── */}
-      <div className="absolute inset-0 z-10 flex flex-col justify-center">
-        <div className="container-xl pt-20 pb-10">
+      <div className="absolute inset-0 z-10 flex flex-col justify-center max-lg:justify-start">
+        <div className="container-xl pt-20 max-lg:pt-28 pb-10">
 
           <motion.p
             custom={0}

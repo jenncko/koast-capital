@@ -48,7 +48,7 @@ export default function AboutMe() {
         {/* ── Content — 2/3 width, same height as image ─────────── */}
         <div
           ref={ref}
-          className="flex flex-col justify-between pt-0 pb-10 px-8 lg:px-14 xl:px-20"
+          className="flex flex-col justify-between pt-8 lg:pt-0 pb-10 px-8 lg:px-14 xl:px-20"
         >
           <div>
             <motion.p
@@ -57,7 +57,7 @@ export default function AboutMe() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="eyebrow mb-8"
             >
-              About Jennifer Ko, Founder of Koast Capital
+              About Jennifer Ko,<br className="lg:hidden" /> Founder of Koast Capital
             </motion.p>
 
             {/* Pullquote */}
