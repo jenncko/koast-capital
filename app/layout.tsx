@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: 'Koast Capital | Jennifer Ko | Boutique Mortgage Advisor',
   description:
     'Personalized mortgage guidance for homebuyers, self-employed borrowers, and real estate investors across California, Nevada, Arizona, and Washington.',
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+  },
   keywords: [
     'mortgage advisor',
     'boutique mortgage',

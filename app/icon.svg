@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#A8B08E"/>
+  <text
+    x="256"
+    y="256"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="380"
+    font-weight="400"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="central"
+  >K</text>
+</svg>
