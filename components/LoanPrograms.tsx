@@ -28,7 +28,7 @@ const programs = [
     dark: true,
   },
   {
-    name: 'DSCR Investor',
+    name: 'Debt Service Coverage Ratio (DSCR)',
     tag: 'Real Estate Investors',
     body: "Built for real estate investors, DSCR financing focuses on a property's rental income rather than personal income documentation. A popular solution for expanding a portfolio without relying on tax returns or traditional debt-to-income calculations.",
     dark: true,
@@ -40,7 +40,7 @@ const programs = [
     dark: false,
   },
   {
-    name: 'Hard Money / Bridge Loans /',
+    name: 'Hard Money / Bridge Loan /',
     line2: 'Fix & Flip',
     tag: 'Short-Term Financing',
     body: 'Fast, asset-based lending for fix-and-flip projects, distressed properties, or time-sensitive acquisitions where speed matters more than rate.',

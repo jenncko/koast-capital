@@ -57,7 +57,7 @@ export default function AboutMe() {
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="eyebrow mb-8"
             >
-              About Jennifer
+              About Jennifer Ko, Founder of Koast Capital
             </motion.p>
 
             {/* Pullquote */}
@@ -90,7 +90,7 @@ export default function AboutMe() {
                 Jennifer Ko believes that financing decisions should be made with clarity, not pressure.
               </p>
               <p>
-                With a B.A. in Economics from UC San Diego and an MBA from USC, she brings both
+                With a B.A. in Economics from the University of California, San Diego and an MBA from the University of Southern California, she brings both
                 analytical expertise and real-world lending experience to every client relationship.
               </p>
               <p>
