@@ -102,64 +102,70 @@ export default function LoanPrograms() {
           className="w-full lg:flex-1 grid grid-cols-1 md:grid-cols-2 gap-px"
           style={{ backgroundColor: 'rgba(56,51,46,0.08)', paddingRight: INSET }}
         >
-          {programs.map((prog, i) => (
-            <motion.div
-              key={prog.name}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -3, boxShadow: prog.dark
-                ? '0 8px 32px rgba(56,51,46,0.28)'
-                : '0 8px 32px rgba(56,51,46,0.08)'
-              }}
-              style={{ backgroundColor: prog.dark ? '#756C5F' : '#EBE5DC' }}
-              className="relative p-6 xl:p-8 group transition-shadow duration-300 cursor-default"
-            >
-              <p className={`eyebrow mb-4 ${prog.dark ? 'text-cream/70' : 'text-charcoal/40'}`}>
-                {prog.tag}
-              </p>
-
-              <h3
-                className={`font-serif font-light leading-tight mb-4 ${
-                  prog.dark ? 'text-cream' : 'text-charcoal'
-                }`}
-                style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}
+          {programs.map((prog, i) => {
+            const mobileDark = i % 2 === 0
+            return (
+              <motion.div
+                key={prog.name}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ y: -3, boxShadow: prog.dark
+                  ? '0 8px 32px rgba(56,51,46,0.28)'
+                  : '0 8px 32px rgba(56,51,46,0.08)'
+                }}
+                className={`relative p-6 xl:p-8 group transition-shadow duration-300 cursor-default
+                  ${mobileDark ? 'max-lg:bg-stone' : 'max-lg:bg-sand'}
+                  ${prog.dark ? 'lg:bg-stone' : 'lg:bg-sand'}`}
               >
-                {prog.name}
-                {'line2' in prog && prog.line2 && <><br />{prog.line2}</>}
-              </h3>
+                <p className={`eyebrow mb-4
+                  ${mobileDark ? 'max-lg:text-cream/70' : 'max-lg:text-charcoal/40'}
+                  ${prog.dark ? 'lg:text-cream/70' : 'lg:text-charcoal/40'}`}>
+                  {prog.tag}
+                </p>
 
-              <div className={`w-24 h-px mb-5 ${prog.dark ? 'bg-cream/25' : 'bg-charcoal/15'}`} />
-
-              <p
-                className={`font-serif font-light ${
-                  prog.dark ? 'text-cream/85' : 'text-mid'
-                }`}
-                style={{ fontSize: '15px', lineHeight: '1.8' }}
-              >
-                {prog.body}
-              </p>
-
-              <a
-                href="#book"
-                className={`mt-8 inline-flex items-center gap-2 eyebrow transition-colors duration-200 ${
-                  prog.dark
-                    ? 'text-cream/50 hover:text-cream'
-                    : 'text-charcoal/40 hover:text-charcoal'
-                }`}
-              >
-                Learn More
-                <svg
-                  width="12" height="12" viewBox="0 0 12 12" fill="none"
-                  stroke="currentColor" strokeWidth="1" strokeLinecap="round"
-                  className="translate-x-0 group-hover:translate-x-1 transition-transform duration-300 ease-out"
+                <h3
+                  className={`font-serif font-light leading-tight mb-4
+                    ${mobileDark ? 'max-lg:text-cream' : 'max-lg:text-charcoal'}
+                    ${prog.dark ? 'lg:text-cream' : 'lg:text-charcoal'}`}
+                  style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}
                 >
-                  <path d="M2 6h8M6 2l4 4-4 4" />
-                </svg>
-              </a>
-            </motion.div>
-          ))}
+                  {prog.name}
+                  {'line2' in prog && prog.line2 && <><br />{prog.line2}</>}
+                </h3>
+
+                <div className={`w-24 h-px mb-5
+                  ${mobileDark ? 'max-lg:bg-cream/25' : 'max-lg:bg-charcoal/15'}
+                  ${prog.dark ? 'lg:bg-cream/25' : 'lg:bg-charcoal/15'}`} />
+
+                <p
+                  className={`font-serif font-light
+                    ${mobileDark ? 'max-lg:text-cream/85' : 'max-lg:text-mid'}
+                    ${prog.dark ? 'lg:text-cream/85' : 'lg:text-mid'}`}
+                  style={{ fontSize: '15px', lineHeight: '1.8' }}
+                >
+                  {prog.body}
+                </p>
+
+                <a
+                  href="#book"
+                  className={`mt-8 inline-flex items-center gap-2 eyebrow transition-colors duration-200
+                    ${mobileDark ? 'max-lg:text-cream/50 max-lg:hover:text-cream' : 'max-lg:text-charcoal/40 max-lg:hover:text-charcoal'}
+                    ${prog.dark ? 'lg:text-cream/50 lg:hover:text-cream' : 'lg:text-charcoal/40 lg:hover:text-charcoal'}`}
+                >
+                  Learn More
+                  <svg
+                    width="12" height="12" viewBox="0 0 12 12" fill="none"
+                    stroke="currentColor" strokeWidth="1" strokeLinecap="round"
+                    className="translate-x-0 group-hover:translate-x-1 transition-transform duration-300 ease-out"
+                  >
+                    <path d="M2 6h8M6 2l4 4-4 4" />
+                  </svg>
+                </a>
+              </motion.div>
+            )
+          })}
         </div>
 
       </div>

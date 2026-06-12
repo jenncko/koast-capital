@@ -19,6 +19,8 @@ const config: Config = {
         charcoal: '#38332E',
         mid: '#7A746E',
         light: '#B0AAA3',
+        stone: '#756C5F',
+        sand: '#EBE5DC',
       },
       fontFamily: {
         serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
