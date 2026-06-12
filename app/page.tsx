@@ -5,6 +5,7 @@ import FundedLoans from '@/components/FundedLoans'
 import LoanPrograms from '@/components/LoanPrograms'
 import BookConsultation from '@/components/BookConsultation'
 import Footer from '@/components/Footer'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <LoanPrograms />
       <BookConsultation />
       <Footer />
+      <ScrollToTop />
     </main>
   )
 }
