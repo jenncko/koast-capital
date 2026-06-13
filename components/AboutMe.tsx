@@ -27,12 +27,14 @@ export default function AboutMe() {
                 'linear-gradient(170deg, #e8edda 0%, #c8d0aa 40%, #A8B08E 75%, #7a8a6a 100%)',
             }}
           />
-          <Image
-            src="/jennifer.jpg"
-            alt="Jennifer Ko — Koast Capital"
-            fill
-            className="object-cover object-top"
-          />
+          <div className="absolute inset-[12.5%]">
+            <Image
+              src="/jennifer2.png"
+              alt="Jennifer Ko — Koast Capital"
+              fill
+              className="object-contain object-top"
+            />
+          </div>
 
           {/* Caption */}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent px-8 pb-8 pt-20">
