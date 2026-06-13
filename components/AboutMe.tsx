@@ -10,39 +10,35 @@ export default function AboutMe() {
 
   return (
     <section id="about" className="overflow-hidden pt-16 lg:pt-24" style={{ backgroundColor: '#F6F2EB' }}>
-      <div className="grid lg:grid-cols-[1fr_2fr] max-w-[1400px] mx-auto items-stretch">
+      <div className="grid lg:grid-cols-[1fr_2fr] max-w-[1400px] mx-auto items-start">
 
-        {/* ── Portrait — 1/3 width, stretches to match text height ──
-            Add your photo at /public/jennifer.jpg               ── */}
+        {/* ── Portrait ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: 'easeOut' }}
-          className="relative min-h-[420px]"
+          className="flex flex-col"
         >
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(170deg, #e8edda 0%, #c8d0aa 40%, #A8B08E 75%, #7a8a6a 100%)',
-            }}
-          />
-          <div className="absolute inset-[12.5%]">
+          {/* Photo */}
+          <div className="relative w-full h-[400px] lg:h-[480px]">
             <Image
               src="/jennifer2.png"
               alt="Jennifer Ko — Koast Capital"
               fill
-              className="object-contain object-top"
+              className="object-cover object-top"
             />
           </div>
 
-          {/* Caption */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent px-8 pb-8 pt-20">
-            <p className="font-serif text-lg font-light text-cream tracking-wide">
+          {/* Caption below photo */}
+          <div className="px-6 lg:px-8 pt-5 pb-8 lg:pb-10">
+            <p
+              className="font-serif font-light text-charcoal"
+              style={{ fontSize: '20px', letterSpacing: '0.01em' }}
+            >
               Jennifer Ko
             </p>
-            <p className="eyebrow text-cream/45 mt-1">
-              Founder &nbsp;·&nbsp; Koast Capital
+            <p className="eyebrow text-mid mt-1.5">
+              Founder, Koast Capital
             </p>
           </div>
         </motion.div>
