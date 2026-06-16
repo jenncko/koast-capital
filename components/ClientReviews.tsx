@@ -7,7 +7,7 @@ const reviews = [
   {
     quote:
       'Jennifer was extremely professional and would recommend to everyone seeking a qualified mortgage broker!',
-    reviewer: 'Henry H',
+    reviewer: 'Henry H.',
     location: 'Irvine, CA',
     loanType: 'P&L Cash-Out Refinance',
     source: 'Google',
@@ -15,7 +15,7 @@ const reviews = [
   {
     quote:
       'I had the pleasure of working with Jennifer, and I highly recommend her to anyone looking to purchase property in the Las Vegas area. She provided clear, detailed instructions and guidance throughout the entire process, ensuring I understood how and when the mortgage would be handled. Her professionalism and expertise made the entire experience seamless. If you\'re considering purchasing property in Vegas, she\'s definitely the loan officer to trust!',
-    reviewer: 'Wilson F',
+    reviewer: 'Wilson F.',
     location: 'Los Angeles, CA',
     loanType: 'Conventional Purchase',
     source: 'Google',
@@ -23,7 +23,7 @@ const reviews = [
   {
     quote:
       'Very knowledgeable, knows the market well, and understands which loan products best fit your individual situation.',
-    reviewer: 'Sheila K',
+    reviewer: 'Sheila K.',
     location: 'Scottsdale, AZ',
     loanType: 'DSCR Cash-Out Refinance',
     source: 'Experience.com',
@@ -31,7 +31,7 @@ const reviews = [
   {
     quote:
       'Jennifer is an excellent, positive, open-minded, and determined professional who was able to help us navigate through a series of fairly complex loan options, forms, and qualification processes. She helped us achieve the result we were looking for: a beautiful new home in an exciting neighborhood. She was always available to answer questions, explain each step, and help us through the home-buying process.',
-    reviewer: 'Talbot S',
+    reviewer: 'Talbot S.',
     location: 'Henderson, NV',
     loanType: 'P&L Purchase',
     source: 'Experience.com',
@@ -39,7 +39,7 @@ const reviews = [
   {
     quote:
       'Jennifer was amazing! She was extremely helpful, knowledgeable, and responsive throughout the process. No question was too small, and her communication was always thorough and detailed. I would gladly recommend Jennifer to my family and friends and look forward to working with her again.',
-    reviewer: 'Thuong V',
+    reviewer: 'Thuong V.',
     location: 'San Jose, CA',
     loanType: 'Jumbo Purchase',
     source: 'Experience.com',
@@ -47,7 +47,7 @@ const reviews = [
   {
     quote:
       'I recently obtained a HELOC through Jennifer and was very impressed by her professionalism and attention to detail. She kept me informed every step of the way and went above and beyond to ensure a smooth process. I truly appreciate her hard work and would confidently recommend her to anyone seeking mortgage financing.',
-    reviewer: 'Troy S',
+    reviewer: 'Troy S.',
     location: 'Scottsdale, AZ',
     loanType: 'HELOC',
     source: 'Experience.com',
