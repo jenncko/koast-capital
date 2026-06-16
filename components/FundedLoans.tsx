@@ -17,11 +17,11 @@ const loans = [
   {
     image: '/funded-2.jpg',
     fallback: 'linear-gradient(175deg, #e8e0d8 0%, #c4a49e 60%, #a0807a 100%)',
-    location: 'Las Vegas, NV',
+    location: 'Scottsdale, AZ',
     tag: 'DSCR · Cash-Out Refinance',
-    amount: '$820,000',
+    amount: '$680,000',
     description:
-      '5-unit investment property. Qualified entirely on rental income — no personal income documentation required.',
+      "For this experienced investor and builder, we refinanced an existing hard money loan into a lower-rate DSCR program. Qualification was based on the property's rental income rather than personal tax returns, providing improved cash flow through an interest-only adjustable-rate mortgage structure.",
   },
   {
     image: '/funded-3.jpg',
