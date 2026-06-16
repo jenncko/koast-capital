@@ -211,7 +211,7 @@ export default function ClientReviews() {
                       className="whitespace-nowrap font-sans font-medium uppercase text-sage/55"
                       style={{ fontSize: '9px', letterSpacing: '0.18em' }}
                     >
-                      Verified Client Review{review.source ? ` · ${review.source}` : ''}
+                      Verified{review.source ? ` · ${review.source}` : ''}
                     </span>
                   </div>
                 </div>
