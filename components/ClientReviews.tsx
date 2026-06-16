@@ -52,6 +52,38 @@ const reviews = [
     loanType: 'HELOC',
     source: 'Experience.com',
   },
+  {
+    quote:
+      'Every time I have question and call she always answers right away. With her professional services I sloved a lot of financial problems and got a lot of advice. I really appreciate her.',
+    reviewer: 'Lai C.',
+    location: 'Palm Desert, CA',
+    loanType: 'DSCR Cash-Out Refinance',
+    source: 'Experience.com',
+  },
+  {
+    quote:
+      'Worked with Jennifer on a recent property I purchased. She was great to work with, helped make sure everything was prepared ahead of time and responded all the questions quickly! Would definitely work with her again, and highly recommend her to anyone.',
+    reviewer: 'Allen H.',
+    location: 'Fremont, CA',
+    loanType: 'Conventional Purchase',
+    source: 'Experience.com',
+  },
+  {
+    quote:
+      'Jen has been a very helpful support and responsible agent to take care of my property. Will be willing to do business with her again.',
+    reviewer: 'Dan C.',
+    location: 'San Jose, CA',
+    loanType: 'Conventional Purchase',
+    source: 'Experience.com',
+  },
+  {
+    quote:
+      'Jennifer was incredibly helpful and knowledgeable throughout our homebuying process in Las Vegas, NV. Two months ago, we purchased a new construction home, but in order to make it work, we needed to sell our existing house first. Jennifer guided us through a cash-out refinance so we could use the funds toward the down payment, and she took the time to clearly explain all the numbers so we felt confident every step of the way. The process wasn\'t always smooth due to various factors, but Jennifer stayed proactive and worked closely with us to find solutions. Thanks to her dedication and patience, we\'re now happily moving into a bigger, newer home. We truly appreciate her hard work and highly recommend her to anyone looking for a knowledgeable and trustworthy loan officer!',
+    reviewer: 'Javiera S.',
+    location: 'Henderson, NV',
+    loanType: 'P&L Purchase',
+    source: 'Experience.com',
+  },
 ]
 
 const INSET = 'max(24px, calc((100vw - 1400px) / 2))'
