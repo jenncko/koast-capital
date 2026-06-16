@@ -3,57 +3,54 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
 
-// TODO: Replace these placeholder reviews with actual Birdeye / Experience.com client reviews.
-// Each object maps to one card in the horizontal scroll track.
-// Fields: quote (required), reviewer (required), location (optional), loanType (optional), source (optional).
 const reviews = [
   {
     quote:
-      'Jennifer made what felt like an overwhelming process completely manageable. She took the time to explain every step, and we closed on time with exactly the loan we needed.',
-    reviewer: 'S. & M. Patel',
-    location: 'Los Angeles, CA',
-    loanType: 'Conventional · Purchase',
+      'Jennifer was extremely professional and would recommend to everyone seeking a qualified mortgage broker!',
+    reviewer: 'Henry H',
+    location: 'Irvine, CA',
+    loanType: 'P&L Cash-Out Refinance',
     source: 'Google',
   },
   {
     quote:
-      'As a self-employed borrower, I assumed financing would be difficult. Jennifer structured everything around my bank statements and got me approved in under three weeks.',
-    reviewer: 'T. Nguyen',
-    location: 'San Diego, CA',
-    loanType: 'Bank Statement · Refinance',
-    source: 'Birdeye',
+      'I had the pleasure of working with Jennifer, and I highly recommend her to anyone looking to purchase property in the Las Vegas area. She provided clear, detailed instructions and guidance throughout the entire process, ensuring I understood how and when the mortgage would be handled. Her professionalism and expertise made the entire experience seamless. If you\'re considering purchasing property in Vegas, she\'s definitely the loan officer to trust!',
+    reviewer: 'Wilson F',
+    location: 'Los Angeles, CA',
+    loanType: 'Conventional Purchase',
+    source: 'Google',
   },
   {
     quote:
-      'Jennifer guided us through the purchase of our first investment property with patience and real expertise. She found a DSCR solution that fit our situation perfectly.',
-    reviewer: 'R. & C. Kim',
-    location: 'Las Vegas, NV',
-    loanType: 'DSCR · Purchase',
-    source: 'Birdeye',
-  },
-  {
-    quote:
-      'The level of service Jennifer provides is unmatched. She was available, transparent, and genuinely invested in finding the right financing — not just the fastest close.',
-    reviewer: 'D. Harrison',
+      'Very knowledgeable, knows the market well, and understands which loan products best fit your individual situation.',
+    reviewer: 'Sheila K',
     location: 'Scottsdale, AZ',
-    loanType: 'Jumbo · Purchase',
+    loanType: 'DSCR Cash-Out Refinance',
     source: 'Experience.com',
   },
   {
     quote:
-      'Jennifer was recommended by a colleague, and I understand why. She handled a complex situation with care and brought our loan to the finish line when another lender had given up.',
-    reviewer: 'A. Morales',
-    location: 'Seattle, WA',
-    loanType: 'Bank Statement · Purchase',
-    source: 'Google',
+      'Jennifer is an excellent, positive, open-minded, and determined professional who was able to help us navigate through a series of fairly complex loan options, forms, and qualification processes. She helped us achieve the result we were looking for: a beautiful new home in an exciting neighborhood. She was always available to answer questions, explain each step, and help us through the home-buying process.',
+    reviewer: 'Talbot S',
+    location: 'Henderson, NV',
+    loanType: 'P&L Purchase',
+    source: 'Experience.com',
   },
   {
     quote:
-      'Professional, knowledgeable, and genuinely caring. Jennifer treated our situation like a priority from day one. We could not have asked for a better experience.',
-    reviewer: 'L. & J. Thompson',
-    location: 'Newport Beach, CA',
-    loanType: 'Conventional · Refinance',
-    source: 'Birdeye',
+      'Jennifer was amazing! She was extremely helpful, knowledgeable, and responsive throughout the process. No question was too small, and her communication was always thorough and detailed. I would gladly recommend Jennifer to my family and friends and look forward to working with her again.',
+    reviewer: 'Thuong V',
+    location: 'San Jose, CA',
+    loanType: 'Jumbo Purchase',
+    source: 'Experience.com',
+  },
+  {
+    quote:
+      'I recently obtained a HELOC through Jennifer and was very impressed by her professionalism and attention to detail. She kept me informed every step of the way and went above and beyond to ensure a smooth process. I truly appreciate her hard work and would confidently recommend her to anyone seeking mortgage financing.',
+    reviewer: 'Troy S',
+    location: 'Scottsdale, AZ',
+    loanType: 'HELOC',
+    source: 'Experience.com',
   },
 ]
 
