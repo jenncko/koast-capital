@@ -26,11 +26,11 @@ const loans = [
   {
     image: '/funded-3.jpg',
     fallback: 'linear-gradient(175deg, #ede8dc 0%, #c8d0aa 60%, #A8B08E 100%)',
-    location: 'Scottsdale, AZ',
-    tag: 'Conventional · Purchase',
-    amount: '$615,000',
+    location: 'San Jose, CA',
+    tag: 'Jumbo · Purchase',
+    amount: '$1,364,000',
     description:
-      'First-time homebuyer in a competitive multiple-offer environment. Pre-approved within 24 hours and secured the home.',
+      'A young technology professional couple purchased their first home in Silicon Valley. With strong W-2 income, excellent credit, and a competitive market to navigate, we guided them through the pre-approval process, financing strategy, and successful closing of their jumbo loan.',
   },
   {
     image: '/funded-4.jpg',
