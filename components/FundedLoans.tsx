@@ -8,11 +8,11 @@ const loans = [
   {
     image: '/funded-1.jpg',
     fallback: 'linear-gradient(175deg, #d4dcba 0%, #A8B08E 60%, #7a8a6a 100%)',
-    location: 'Los Angeles, CA',
-    tag: 'Bank Statement · Purchase',
-    amount: '$1,400,000',
+    location: 'Irvine, CA',
+    tag: 'No Ratio · Cash-Out Refinance',
+    amount: '$500,000',
     description:
-      'Self-employed business owner, previously declined by two lenders. Approved on 12-month bank statements and closed in 28 days.',
+      "For this self-employed business owner, traditional income documentation wasn't necessary. By leveraging a free-and-clear investment property, we structured a No Ratio cash-out refinance based solely on equity, delivering a straightforward solution with minimal documentation and efficient execution.",
   },
   {
     image: '/funded-2.jpg',
