@@ -84,6 +84,36 @@ const reviews = [
     loanType: 'P&L Purchase',
     source: 'Experience.com',
   },
+  {
+    quote:
+      "We really enjoyed working with Jennifer through the whole process and beyond. We hit it off from the start. She is knowledgeable, kind and patient. We can't wait to take care of all we got our loan for…",
+    reviewer: 'Christina H.',
+    location: 'Seattle, WA',
+    loanType: 'HELOC',
+    source: 'Google',
+  },
+  {
+    quote: 'Always available, always friendly.',
+    reviewer: 'Joshua H.',
+    location: 'Phoenix, AZ',
+    loanType: 'Conventional Refinance',
+    source: 'Google',
+  },
+  {
+    quote: 'Jennifer Ko was super helpful, friendly and available!',
+    reviewer: 'Timothy D.',
+    location: 'Ventura, CA',
+    loanType: 'Jumbo Purchase',
+    source: 'Google',
+  },
+  {
+    quote:
+      "As a first time homebuyer, I was nervous about the process, especially with a language barrier, but my loan officer Jennifer Ko went above and beyond to make sure I felt informed and supported every step of the way. She was incredibly patient and thorough, taking the time to explain all the numbers in detail and made sure I truly understood what I was signing. Jennifer also worked hard with my realtor to negotiate a seller credit, which helped buy down my interest rate and made a huge difference in my monthly payment. Her professionalism made this experience smooth and much less stressful than I expected. I'm so thankful for her help and would highly recommend her to anyone!",
+    reviewer: 'Yun G.',
+    location: 'Las Vegas, NV',
+    loanType: 'FHA Purchase',
+    source: 'Google',
+  },
 ]
 
 const INSET = 'max(24px, calc((100vw - 1400px) / 2))'
