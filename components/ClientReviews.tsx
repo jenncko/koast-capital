@@ -54,7 +54,7 @@ const reviews = [
   },
   {
     quote:
-      'Every time I have question and call she always answers right away. With her professional services I sloved a lot of financial problems and got a lot of advice. I really appreciate her.',
+      'Every time I have question and call she always answers right away. With her professional services I solved a lot of financial problems and got a lot of advice. I really appreciate her.',
     reviewer: 'Lai C.',
     location: 'Palm Desert, CA',
     loanType: 'DSCR Cash-Out Refinance',
