@@ -35,11 +35,11 @@ const loans = [
   {
     image: '/funded-4.jpg',
     fallback: 'linear-gradient(175deg, #d8ddd0 0%, #9aaa80 60%, #6b7a52 100%)',
-    location: 'Seattle, WA',
-    tag: 'Jumbo · Purchase',
-    amount: '$2,100,000',
+    location: 'Las Vegas, NV',
+    tag: 'P&L · Purchase',
+    amount: '$1,450,000',
     description:
-      'High-net-worth buyer with a complex asset structure. Navigated documentation strategically for a clean, on-time close.',
+      'A retired investor acquired a luxury Toll Brothers residence in the highly desirable Summerlin community. Through a Profit & Loss loan program, we structured financing based on CPA-prepared P&L rather than traditional income documentation, creating a streamlined path to homeownership while preserving financial flexibility.',
   },
   {
     image: '/funded-5.jpg',
