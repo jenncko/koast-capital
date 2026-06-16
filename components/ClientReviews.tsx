@@ -199,17 +199,20 @@ export default function ClientReviews() {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-2 mt-2.5">
+                  <div className="flex items-center gap-1.5 mt-2.5">
                     <svg
-                      width="10" height="10" viewBox="0 0 10 10" fill="none"
+                      width="9" height="9" viewBox="0 0 10 10" fill="none"
                       stroke="#A8B08E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                      className="flex-shrink-0"
                     >
                       <polyline points="1.5 5 4 7.5 8.5 2" />
                     </svg>
-                    <span className="eyebrow text-sage/55">Verified Client Review</span>
-                    {review.source && (
-                      <span className="eyebrow text-cream/20">· {review.source}</span>
-                    )}
+                    <span
+                      className="whitespace-nowrap font-sans font-medium uppercase text-sage/55"
+                      style={{ fontSize: '9px', letterSpacing: '0.18em' }}
+                    >
+                      Verified Client Review{review.source ? ` · ${review.source}` : ''}
+                    </span>
                   </div>
                 </div>
               </div>
