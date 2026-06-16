@@ -232,7 +232,7 @@ export default function FundedLoans() {
                 </p>
                 <p className="eyebrow text-charcoal/25 mt-1.5 mb-4">Loan Amount</p>
                 <div className="h-px bg-charcoal/8 mb-4" />
-                <p className="font-sans font-light text-mid text-sm leading-relaxed flex-1">
+                <p className="font-serif font-light text-mid flex-1" style={{ fontSize: '14px', lineHeight: '1.8' }}>
                   {loan.description}
                 </p>
                 <a
