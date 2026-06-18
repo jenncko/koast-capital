@@ -92,7 +92,7 @@ export default function AboutMe() {
                 analytical expertise and real-world lending experience to every client relationship.
               </p>
               <p>
-                Before founding Koast Capital, Jennifer spent over a decade in mortgage operations,
+                Before founding Koast Capital, Jennifer spent more than 15 years in mortgage operations,
                 processing, auditing, and management — developing a deep understanding of how loans
                 are evaluated, structured, and approved.
               </p>
