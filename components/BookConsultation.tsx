@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import ReadyToApply from '@/components/ReadyToApply'
 import { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -124,6 +125,8 @@ export default function BookConsultation() {
         </motion.div>
         </div>
       </div>
+
+      <ReadyToApply />
 
       {/* ── Content ── */}
       <div className="mx-auto px-8 lg:px-16 pb-32" style={{ maxWidth: '1200px' }}>
