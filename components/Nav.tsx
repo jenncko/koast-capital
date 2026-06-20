@@ -8,7 +8,7 @@ const links = [
   { label: 'Funded Loans', href: '#funded' },
   { label: 'Programs', href: '#programs' },
   { label: 'Contact', href: '#book' },
-  { label: 'Apply', href: '#' },
+  { label: 'Apply', href: '#apply' },
 ]
 
 export default function Nav() {
