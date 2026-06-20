@@ -120,7 +120,7 @@ export default function ReadyToApply() {
               className="font-serif font-light text-charcoal leading-tight mb-3"
               style={{ fontSize: 'clamp(19px, 1.6vw, 24px)' }}
             >
-              Home Equity
+              Home Equity Line of Credit
             </h3>
 
             <div className="w-10 h-px bg-sage/40 mb-3" />
