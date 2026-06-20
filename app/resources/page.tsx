@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -96,35 +97,56 @@ export default function ResourcesPage() {
       <Nav />
 
       {/* ── Hero ── */}
-      <section className="pt-36 pb-16 lg:pt-44 lg:pb-20" style={{ backgroundColor: '#38332E' }}>
-        <div className="container-xl">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="eyebrow text-cream/40 mb-6"
-          >
-            Koast Capital
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif font-light text-cream leading-tight mb-6"
-            style={{ fontSize: 'clamp(42px, 6vw, 88px)' }}
-          >
-            Resources
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif font-light text-cream/55 max-w-xl"
-            style={{ fontSize: 'clamp(15px, 1.3vw, 18px)', lineHeight: '1.75' }}
-          >
-            Mortgage insights, lending strategies, and educational guides designed
-            to help you make informed decisions.
-          </motion.p>
+      <section
+        className="relative overflow-hidden"
+        style={{ height: 'clamp(520px, 52vw, 720px)' }}
+      >
+        {/* Background image */}
+        <div className="absolute inset-0" style={{ backgroundColor: '#2a2520' }}>
+          <Image
+            src="/images/resources-hero-desert-modern.png"
+            alt="Koast Capital Resources — desert contemporary architecture"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center">
+          <div className="container-xl pt-20">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="eyebrow text-cream/50 mb-6"
+            >
+              Koast Capital
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif font-light text-cream leading-tight mb-6"
+              style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
+            >
+              Resources
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-serif font-light text-cream/60 max-w-lg"
+              style={{ fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: '1.8' }}
+            >
+              Mortgage insights, lending strategies, and educational guides designed
+              to help you make informed decisions.
+            </motion.p>
+          </div>
         </div>
       </section>
 
