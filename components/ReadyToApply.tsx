@@ -73,7 +73,7 @@ export default function ReadyToApply() {
               className="font-serif font-light text-mid flex-1 mb-7"
               style={{ fontSize: '14px', lineHeight: '1.8' }}
             >
-              Primary Homes &bull; Second Homes &bull; Investment Properties
+              Primary Homes &bull; Second Homes<br />Investment Properties
               <br />
               <a
                 href="#programs"
