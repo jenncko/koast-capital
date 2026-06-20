@@ -184,12 +184,12 @@ export default function ResourcesPage() {
           </div>
 
           {/* Filter pills */}
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
+          <div className="flex flex-wrap gap-2">
             {FILTERS.map((f) => (
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
-                className={`flex-shrink-0 px-4 py-1.5 border transition-all duration-200 eyebrow ${
+                className={`whitespace-nowrap px-4 py-1.5 border transition-all duration-200 eyebrow ${
                   activeFilter === f
                     ? 'bg-charcoal text-cream border-charcoal'
                     : 'border-charcoal/15 text-charcoal/50 hover:border-sage hover:text-charcoal'
