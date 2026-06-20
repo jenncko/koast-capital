@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import articles, { getArticleBySlug, getRelatedArticles } from '@/lib/articles'
@@ -77,9 +78,19 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
       {/* ── Hero image ── */}
       <div
-        className="w-full pt-[72px]"
+        className="w-full pt-[72px] relative overflow-hidden"
         style={{ height: 'clamp(260px, 38vw, 480px)', background: article.gradient }}
-      />
+      >
+        {article.image && (
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        )}
+      </div>
 
       {/* ── Article header ── */}
       <div style={{ backgroundColor: '#F6F2EB' }}>
