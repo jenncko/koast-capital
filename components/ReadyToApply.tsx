@@ -16,8 +16,8 @@ const dollarIcon = (
   </svg>
 )
 
-const cardClass = "flex flex-col p-7 lg:p-8 border border-charcoal/10 bg-white/60"
-const cardStyle = { boxShadow: '0 2px 16px rgba(56,51,46,0.05)' }
+const cardClass = "flex flex-col p-7 lg:p-8 border border-charcoal/12 bg-white/70"
+const cardStyle = { boxShadow: '0 2px 20px rgba(56,51,46,0.07)' }
 
 export default function ReadyToApply() {
   return (
@@ -39,7 +39,7 @@ export default function ReadyToApply() {
             Ready to Apply?
           </h2>
           <p
-            className="font-serif font-light text-mid mx-auto"
+            className="font-serif font-light text-charcoal/50 mx-auto"
             style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.75', maxWidth: '420px' }}
           >
             Choose the option that fits your goals.
@@ -70,14 +70,14 @@ export default function ReadyToApply() {
             <div className="w-10 h-px bg-sage/40 mb-3" />
 
             <p
-              className="font-serif font-light text-mid flex-1 mb-7"
+              className="font-serif font-light text-charcoal/60 flex-1 mb-7"
               style={{ fontSize: '14px', lineHeight: '1.8' }}
             >
               Primary Homes &bull; Second Homes &bull;<br />Investment Properties
               <br />
               <a
                 href="#programs"
-                className="text-sage/70 hover:text-sage transition-colors duration-200"
+                className="text-sage hover:text-sage-dark transition-colors duration-200"
               >
                 See all programs available.
               </a>
@@ -126,7 +126,7 @@ export default function ReadyToApply() {
             <div className="w-10 h-px bg-sage/40 mb-3" />
 
             <p
-              className="font-serif font-light text-mid flex-1 mb-7"
+              className="font-serif font-light text-charcoal/60 flex-1 mb-7"
               style={{ fontSize: '14px', lineHeight: '1.8' }}
             >
               Access your home equity with a HELOC. Most applications take approximately 5 minutes to complete.
