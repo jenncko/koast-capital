@@ -13,6 +13,7 @@ export type Article = {
   excerpt: string
   categories: string[]
   gradient: string
+  image?: string
   readTime: string
   date: string
   featured: boolean
@@ -28,6 +29,7 @@ const articles: Article[] = [
     excerpt: 'Both options let you access your home equity — but they work very differently. Here\'s how to choose the right one for your situation.',
     categories: ['HELOC'],
     gradient: 'linear-gradient(135deg, #c4ccaa 0%, #8C9870 100%)',
+    image: '/images/resources-1.png',
     readTime: '5 min read',
     date: 'June 10, 2025',
     featured: true,
@@ -72,6 +74,7 @@ const articles: Article[] = [
     excerpt: 'Debt Service Coverage Ratio loans let investors qualify based on property income — no personal tax returns required.',
     categories: ['DSCR'],
     gradient: 'linear-gradient(135deg, #b8b0a8 0%, #756C5F 100%)',
+    image: '/images/resources-2.png',
     readTime: '6 min read',
     date: 'May 28, 2025',
     featured: true,
@@ -114,6 +117,7 @@ const articles: Article[] = [
     excerpt: 'If your tax returns don\'t reflect your actual cash flow, a bank statement loan may be the solution you\'ve been looking for.',
     categories: ['Bank Statement', 'P&L'],
     gradient: 'linear-gradient(135deg, #c8d4cc 0%, #6a8a86 100%)',
+    image: '/images/resources-3.png',
     readTime: '5 min read',
     date: 'May 14, 2025',
     featured: true,
@@ -156,6 +160,7 @@ const articles: Article[] = [
     excerpt: 'You don\'t have to sell before you can buy. Bridge financing and strategic planning can make the transition seamless in any market.',
     categories: ['Hard Money', 'Conventional'],
     gradient: 'linear-gradient(135deg, #d4c8be 0%, #C4A49E 100%)',
+    image: '/images/resources-4.png',
     readTime: '7 min read',
     date: 'April 30, 2025',
     featured: true,

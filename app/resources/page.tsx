@@ -28,11 +28,20 @@ function ArticleCard({ article, index, size = 'normal' }: {
     >
       <Link href={`/resources/${article.slug}`} className="group block">
         {/* Image */}
-        <div className="overflow-hidden mb-4" style={{ aspectRatio: '16/9' }}>
-          <div
-            className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
-            style={{ background: article.gradient }}
-          />
+        <div className="overflow-hidden mb-4 relative" style={{ aspectRatio: '16/9' }}>
+          {article.image ? (
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          ) : (
+            <div
+              className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+              style={{ background: article.gradient }}
+            />
+          )}
         </div>
 
         {/* Category */}
