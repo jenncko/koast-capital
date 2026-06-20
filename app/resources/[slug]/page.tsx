@@ -157,7 +157,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             className="font-serif font-light text-charcoal/55 mb-12"
             style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.8' }}
           >
-            Whether you're comparing loan programs, accessing home equity, or planning your next purchase, we'll help you evaluate the right financing path.
+            Whether you&apos;re comparing loan programs, accessing home equity, or planning your next purchase, we&apos;ll help you evaluate the right financing path.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             {[
