@@ -164,7 +164,7 @@ export default function ReadyToApply() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="eyebrow text-charcoal/25 text-center mt-8"
         >
-          Secure. Easy. Your information is kept confidential.
+          Secure. Confidential. No obligation.
         </motion.p>
 
       </div>
