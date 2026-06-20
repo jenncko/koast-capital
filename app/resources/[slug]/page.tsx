@@ -160,41 +160,24 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             Whether you're comparing loan programs, accessing home equity, or planning your next purchase, we'll help you evaluate the right financing path.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="/#book"
-              style={{ backgroundColor: '#756C5F' }}
-              className="group flex items-center justify-between gap-4 px-7 py-4 text-cream eyebrow hover:bg-sage transition-all duration-300"
-            >
-              Book a Conversation
-              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
-                className="group-hover:translate-x-0.5 transition-transform duration-300">
-                <path d="M2 6h8M6 2l4 4-4 4" />
-              </svg>
-            </a>
-            <a
-              href="https://luminlending-apply-jennifer-ko.my1003app.com/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:border-sage hover:text-sage transition-all duration-300"
-            >
-              Apply for a Mortgage
-              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
-                className="group-hover:translate-x-0.5 transition-transform duration-300">
-                <path d="M2 6h8M6 2l4 4-4 4" />
-              </svg>
-            </a>
-            <a
-              href="https://heloc.luminlending.com/account/heloc/register?referrer=af6dcf7d-0404-4773-babc-86037f37a537"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:border-sage hover:text-sage transition-all duration-300"
-            >
-              Home Equity Application
-              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
-                className="group-hover:translate-x-0.5 transition-transform duration-300">
-                <path d="M2 6h8M6 2l4 4-4 4" />
-              </svg>
-            </a>
+            {[
+              { label: 'Book a Conversation', href: '/#book', external: false },
+              { label: 'Apply for a Mortgage', href: 'https://luminlending-apply-jennifer-ko.my1003app.com/register', external: true },
+              { label: 'Apply for a HELOC', href: 'https://heloc.luminlending.com/account/heloc/register?referrer=af6dcf7d-0404-4773-babc-86037f37a537', external: true },
+            ].map(({ label, href, external }) => (
+              <a
+                key={label}
+                href={href}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="group flex items-center justify-between gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:border-sage hover:text-sage transition-all duration-300"
+              >
+                {label}
+                <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
+                  className="group-hover:translate-x-0.5 transition-transform duration-300">
+                  <path d="M2 6h8M6 2l4 4-4 4" />
+                </svg>
+              </a>
+            ))}
           </div>
         </div>
       </section>
