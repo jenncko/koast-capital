@@ -17,7 +17,7 @@ export default function Hero() {
     <section className="relative h-screen min-h-[680px] overflow-hidden">
 
       {/* ── Background image ─────────────────────────────────────────
-          Add your photo at /public/hero.jpg
+          Add your photo at /public/hero 2.png
           The sage gradient below is the fallback while no image exists. ── */}
       <div
         className="absolute inset-0"
@@ -27,7 +27,7 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/hero.jpg"
+          src="/hero 2.png"
           alt="Koast Capital — boutique mortgage advisory"
           fill
           priority
