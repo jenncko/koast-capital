@@ -146,9 +146,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       {/* ── Next Steps CTA ── */}
       <section className="py-20 lg:py-24 border-t border-charcoal/8" style={{ backgroundColor: '#EBE5DC' }}>
         <div className="container-xl max-w-[860px]">
-          <p className="eyebrow text-charcoal/45 mb-5">Have questions about your situation?</p>
+          <p className="eyebrow text-charcoal/45 mb-5">Next Steps</p>
           <h2
-            className="font-serif font-light text-charcoal leading-tight mb-5"
+            className="font-serif font-light italic text-charcoal leading-tight mb-5"
             style={{ fontSize: 'clamp(24px, 2.5vw, 36px)' }}
           >
             Ready to Explore Your Options?
