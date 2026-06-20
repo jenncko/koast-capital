@@ -117,8 +117,8 @@ export default function ResourcesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center">
-          <div className="container-xl pt-20">
+        <div className="relative z-10 h-full flex flex-col justify-center lg:pb-16">
+          <div className="container-xl pt-20 lg:pt-0 lg:-mt-10 lg:pl-12">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
