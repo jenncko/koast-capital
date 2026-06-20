@@ -67,10 +67,10 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
 
           case 'list':
             return (
-              <ul key={i} className="space-y-3 pl-1">
+              <ul key={i} className="space-y-3">
                 {block.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-4">
-                    <span className="mt-[7px] w-4 h-px bg-sage flex-shrink-0" />
+                  <li key={j} className="flex items-center gap-4">
+                    <span className="w-5 h-px bg-sage flex-shrink-0 block" />
                     <span
                       className="font-serif font-light text-charcoal/75"
                       style={{ fontSize: 'clamp(14px, 1vw, 16px)', lineHeight: '1.8' }}
