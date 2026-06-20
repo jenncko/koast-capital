@@ -140,42 +140,25 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       <div style={{ backgroundColor: '#F6F2EB' }}>
         <div className="container-xl max-w-[860px] py-10">
           <ArticleBody blocks={article.body} />
-
-          {/* Inline CTA */}
-          <div className="mt-14 py-10 border-t border-b border-charcoal/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div>
-              <p className="eyebrow mb-2">Have questions about your situation?</p>
-              <p
-                className="font-serif font-light italic text-charcoal"
-                style={{ fontSize: 'clamp(18px, 1.6vw, 24px)' }}
-              >
-                Schedule a Consultation
-              </p>
-            </div>
-            <a
-              href="/#book"
-              className="group flex-shrink-0 flex items-center gap-3 eyebrow px-7 py-3.5 border border-charcoal/20 text-charcoal hover:bg-sage hover:border-sage hover:text-cream transition-all duration-300"
-            >
-              Book a Conversation
-              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
-                className="group-hover:translate-x-0.5 transition-transform duration-300">
-                <path d="M2 6h8M6 2l4 4-4 4" />
-              </svg>
-            </a>
-          </div>
         </div>
       </div>
 
-      {/* ── Bottom CTA ── */}
-      <section className="py-16 lg:py-20 border-t border-charcoal/8" style={{ backgroundColor: '#EBE5DC' }}>
+      {/* ── Next Steps CTA ── */}
+      <section className="py-20 lg:py-24 border-t border-charcoal/8" style={{ backgroundColor: '#EBE5DC' }}>
         <div className="container-xl max-w-[860px]">
-          <p className="eyebrow mb-4">Next Steps</p>
+          <p className="eyebrow text-charcoal/45 mb-5">Have questions about your situation?</p>
           <h2
-            className="font-serif font-light text-charcoal leading-tight mb-10"
+            className="font-serif font-light text-charcoal leading-tight mb-5"
             style={{ fontSize: 'clamp(24px, 2.5vw, 36px)' }}
           >
             Ready to Explore Your Options?
           </h2>
+          <p
+            className="font-serif font-light text-charcoal/55 mb-12"
+            style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.8' }}
+          >
+            Whether you're comparing loan programs, accessing home equity, or planning your next purchase, we'll help you evaluate the right financing path.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="/#book"
