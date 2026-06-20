@@ -84,7 +84,7 @@ export default function BookConsultation() {
           className="absolute inset-0"
           style={{ background: 'linear-gradient(160deg, #c8d8d4 0%, #8faaa6 50%, #5c7e7a 100%)' }}
         >
-          <Image src="/coastal.jpg" alt="" fill className="object-cover object-center" />
+          <Image src="/coast.png" alt="" fill className="object-cover object-center" />
         </div>
         <div className="absolute inset-0 bg-charcoal/45" />
 
