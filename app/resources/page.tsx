@@ -117,35 +117,37 @@ export default function ResourcesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center lg:pb-16">
-          <div className="container-xl pt-20 lg:pt-0 lg:-mt-10">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="eyebrow text-cream/50 mb-6"
-            >
-              Koast Capital
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif font-light text-cream leading-tight mb-6"
-              style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
-            >
-              Resources
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif font-light text-cream/60 max-w-lg"
-              style={{ fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: '1.8' }}
-            >
-              Mortgage insights, lending strategies, and educational guides designed
-              to help you make informed decisions.
-            </motion.p>
+        <div className="absolute inset-0 z-10" style={{ paddingTop: 'clamp(120px, 28vw, 220px)' }}>
+          <div className="container-xl">
+            <div className="max-w-[700px] text-left">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="eyebrow text-cream/50 mb-6"
+              >
+                Koast Capital
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="font-serif font-light text-cream leading-tight mb-6"
+                style={{ fontSize: 'clamp(48px, 7vw, 96px)' }}
+              >
+                Resources
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="font-serif font-light text-cream/60"
+                style={{ fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: '1.8' }}
+              >
+                Mortgage insights, lending strategies, and educational guides designed
+                to help you make informed decisions.
+              </motion.p>
+            </div>
           </div>
         </div>
       </section>
