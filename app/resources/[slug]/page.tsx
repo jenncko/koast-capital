@@ -169,7 +169,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
                 key={label}
                 href={href}
                 {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="group flex items-center justify-between gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:border-sage hover:text-sage transition-all duration-300"
+                className="group flex items-center justify-between gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:bg-sage hover:border-sage hover:text-cream transition-all duration-300"
               >
                 {label}
                 <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
