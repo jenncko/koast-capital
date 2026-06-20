@@ -144,8 +144,8 @@ export default function ResourcesPage() {
                 className="font-serif font-light text-cream/60"
                 style={{ fontSize: 'clamp(15px, 1.2vw, 18px)', lineHeight: '1.8' }}
               >
-                Mortgage insights, lending strategies, and educational guides designed
-                to help you make informed decisions.
+                Mortgage insights, lending strategies, and educational guides<br />
+                designed to help you make informed decisions.
               </motion.p>
             </div>
           </div>
