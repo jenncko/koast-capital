@@ -117,7 +117,7 @@ export default function ResourcesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="absolute inset-0 z-10" style={{ paddingTop: 'clamp(120px, 28vw, 220px)' }}>
+        <div className="absolute inset-0 z-10" style={{ paddingTop: 'clamp(100px, 22vw, 180px)' }}>
           <div className="container-xl">
             <div className="max-w-[700px] text-left">
               <motion.p
