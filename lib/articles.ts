@@ -553,7 +553,7 @@ const articles: Article[] = [
     slug: 'physician-loans-doctors-buying-home',
     title: 'Physician Loans: What Doctors Should Know About Buying a Home',
     excerpt: 'Physician mortgage programs are designed for medical professionals with strong future income but limited savings after years of training. Here\'s how they work and when they may make sense.',
-    categories: ['Professionals', 'Conventional'],
+    categories: ['Professionals'],
     gradient: 'linear-gradient(135deg, #c8cfc8 0%, #7a8c7a 100%)',
     image: '/images/resources-13.png',
     readTime: '7 min read',
