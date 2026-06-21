@@ -161,7 +161,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ── Search + Filter ── */}
-      <div className="sticky top-[72px] z-30 border-b border-charcoal/8" style={{ backgroundColor: '#F6F2EB' }}>
+      <div className="border-b border-charcoal/8" style={{ backgroundColor: '#F6F2EB' }}>
         <div className="container-xl py-5">
           {/* Search */}
           <div className="relative mb-5">
