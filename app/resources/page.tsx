@@ -10,8 +10,7 @@ import articles from '@/lib/articles'
 
 const FILTERS = [
   'All', 'Conventional', 'FHA', 'VA', 'Jumbo',
-  'Self Employed', 'DSCR', 'No Ratio',
-  'Hard Money', 'Bridge Loan', 'Fix & Flip', 'HELOC', 'HELOAN', 'Professionals', 'Retirement', 'Reverse', 'Foreign National',
+  'Self Employed', 'Investors', 'Professionals', 'Retirement', 'Foreign National', 'Home Equity',
 ]
 
 function ArticleCard({ article, index, size = 'normal' }: {
