@@ -1,13 +1,23 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
-function fmt(val: number) {
+function fmtNum(val: number): string {
   if (!isFinite(val) || isNaN(val)) return '—'
-  return '$' + Math.round(val).toLocaleString('en-US')
+  return Math.round(val).toLocaleString('en-US')
+}
+
+function Dollars({ val, className, style }: { val: number; className?: string; style?: React.CSSProperties }) {
+  const num = fmtNum(val)
+  if (num === '—') return <span className={className} style={style}>—</span>
+  return (
+    <span className={className} style={style}>
+      <span className="font-sans font-light">$</span>{num}
+    </span>
+  )
 }
 
 function parseNum(s: string): number {
@@ -287,12 +297,11 @@ export default function MortgageCalculatorPage() {
 
               {/* Big number */}
               <div>
-                <span
-                  className="font-serif font-light text-charcoal"
-                  style={{ fontSize: 'clamp(48px, 6vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1 }}
-                >
-                  {fmt(results.total)}
-                </span>
+                <Dollars
+                  val={results.total}
+                  className="font-serif font-light text-charcoal tabular-nums"
+                  style={{ fontSize: 'clamp(48px, 6vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1 } as React.CSSProperties}
+                />
                 <span className="eyebrow text-charcoal/30 ml-3">/mo</span>
                 <p className="eyebrow text-charcoal/25 mt-3">Total Estimated Payment</p>
               </div>
@@ -300,15 +309,18 @@ export default function MortgageCalculatorPage() {
               {/* Breakdown grid */}
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-charcoal/10 divide-y sm:divide-y-0 sm:divide-x divide-charcoal/8"
                 style={{ backgroundColor: '#EBE5DC' }}>
-                {[
-                  { label: 'Principal & Interest', value: fmt(results.pi) },
-                  { label: 'Property Tax', value: results.monthlyTax > 0 ? fmt(results.monthlyTax) : '—' },
-                  { label: 'Homeowners Insurance', value: results.monthlyInsurance > 0 ? fmt(results.monthlyInsurance) : '—' },
-                  { label: 'HOA', value: results.monthlyHoa > 0 ? fmt(results.monthlyHoa) : '—' },
-                ].map((row) => (
+                {([
+                  { label: 'Principal & Interest', val: results.pi, show: true },
+                  { label: 'Property Tax', val: results.monthlyTax, show: results.monthlyTax > 0 },
+                  { label: 'Homeowners Insurance', val: results.monthlyInsurance, show: results.monthlyInsurance > 0 },
+                  { label: 'HOA', val: results.monthlyHoa, show: results.monthlyHoa > 0 },
+                ] as { label: string; val: number; show: boolean }[]).map((row) => (
                   <div key={row.label} className="px-6 py-5 flex flex-col gap-2">
                     <span className="eyebrow text-charcoal/35">{row.label}</span>
-                    <span className="font-serif font-light text-charcoal text-[20px] tabular-nums">{row.value}</span>
+                    {row.show
+                      ? <Dollars val={row.val} className="font-serif font-light text-charcoal text-[20px] tabular-nums" />
+                      : <span className="font-serif font-light text-charcoal text-[20px]">—</span>
+                    }
                   </div>
                 ))}
               </div>
@@ -320,7 +332,7 @@ export default function MortgageCalculatorPage() {
               <div className="flex items-baseline gap-8">
                 <div>
                   <p className="eyebrow text-charcoal/35 mb-1.5">Loan Amount</p>
-                  <p className="font-serif font-light text-charcoal text-[20px] tabular-nums">{fmt(results.loanAmount)}</p>
+                  <Dollars val={results.loanAmount} className="font-serif font-light text-charcoal text-[20px] tabular-nums" />
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10">
