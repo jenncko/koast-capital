@@ -158,7 +158,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             {[
-              { label: 'Book a Conversation', href: '/#book', external: false },
+              { label: 'Schedule a Consultation', href: '/#book', external: false },
               { label: 'Apply for a Mortgage', href: 'https://luminlending-apply-jennifer-ko.my1003app.com/register', external: true },
               { label: 'Apply for a HELOC', href: 'https://heloc.luminlending.com/account/heloc/register?referrer=af6dcf7d-0404-4773-babc-86037f37a537', external: true },
             ].map(({ label, href, external }) => (

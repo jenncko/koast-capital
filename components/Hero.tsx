@@ -78,7 +78,7 @@ export default function Hero() {
               href="#book"
               className="eyebrow px-9 py-4 bg-cream text-charcoal hover:bg-sage hover:text-charcoal transition-all duration-500"
             >
-              Book a Conversation
+              Schedule a Consultation
             </a>
             <a
               href="#about"

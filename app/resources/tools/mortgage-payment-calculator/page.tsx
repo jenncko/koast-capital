@@ -191,7 +191,7 @@ export default function MortgageCalculatorPage() {
               href="/#book"
               className="group flex items-center gap-3 eyebrow text-charcoal/40 hover:text-sage transition-colors duration-300"
             >
-              Book a Conversation
+              Schedule a Consultation
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
                 className="group-hover:translate-x-0.5 transition-transform duration-300">
                 <path d="M2 6h8M6 2l4 4-4 4" />

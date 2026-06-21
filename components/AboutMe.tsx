@@ -132,7 +132,7 @@ export default function AboutMe() {
               href="#book"
               className="eyebrow text-charcoal hover:text-sage transition-colors duration-300 flex items-center gap-3 group"
             >
-              Book a Conversation
+              Schedule a Consultation
               <svg
                 width="16" height="16" viewBox="0 0 16 16" fill="none"
                 stroke="currentColor" strokeWidth="1" strokeLinecap="round"

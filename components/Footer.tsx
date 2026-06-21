@@ -2,7 +2,7 @@ const nav = [
   { label: 'About', href: '#about' },
   { label: 'Funded Loans', href: '#funded' },
   { label: 'Loan Programs', href: '#programs' },
-  { label: 'Book a Conversation', href: '#book' },
+  { label: 'Schedule a Consultation', href: '#book' },
 ]
 
 export default function Footer() {

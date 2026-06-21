@@ -96,7 +96,7 @@ export default function BookConsultation() {
           transition={{ duration: 0.8 }}
           className="mb-8 flex items-center gap-6 w-full max-w-xl"
         >
-          <p className="eyebrow text-cream">Book a Conversation</p>
+          <p className="eyebrow text-cream">Schedule a Consultation</p>
           <div className="flex-1 h-px bg-cream/40" />
         </motion.div>
 

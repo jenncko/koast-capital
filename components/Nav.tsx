@@ -135,7 +135,7 @@ export default function Nav() {
                 : 'border border-cream/60 text-cream hover:bg-cream hover:text-charcoal'
             }`}
           >
-            Book a Conversation
+            Schedule a Consultation
           </a>
         </nav>
 
@@ -220,7 +220,7 @@ export default function Nav() {
                 className="eyebrow px-7 py-3.5 text-cream text-center mt-2"
                 onClick={() => setMenuOpen(false)}
               >
-                Book a Conversation
+                Schedule a Consultation
               </a>
             </div>
           </motion.div>
