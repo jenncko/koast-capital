@@ -305,7 +305,7 @@ export default function MortgageCalculatorPage() {
                               }
                               setDownMode(mode)
                             }}
-                            className={`px-2 py-0.5 font-sans text-[10px] tracking-[0.15em] transition-all duration-150 ${
+                            className={`px-2 py-0 font-sans text-[10px] tracking-[0.15em] transition-all duration-150 ${
                               downMode === mode
                                 ? 'text-charcoal'
                                 : 'text-charcoal/25 hover:text-charcoal/50'
@@ -340,16 +340,20 @@ export default function MortgageCalculatorPage() {
                   />
 
                   <div>
-                    <label className="eyebrow text-charcoal/40 mb-1.5 block">Loan Term</label>
-                    <div className="flex gap-2 pt-1">
+                    <div className="flex items-baseline justify-between mb-1.5">
+                      <label className="eyebrow text-charcoal/40">Loan Term</label>
+                    </div>
+                    <div className="flex items-center gap-3 border-b border-charcoal/15 py-2.5">
+                      {/* Zero-width strut — forces row to match text-[15px] font-serif input height */}
+                      <span aria-hidden className="font-serif text-[15px] w-0 overflow-hidden select-none opacity-0">&nbsp;</span>
                       {[10, 15, 20, 30].map((yr) => (
                         <button
                           key={yr}
                           onClick={() => setLoanTerm(String(yr))}
-                          className={`flex-1 py-2 border font-sans font-medium text-[10px] tracking-[0.18em] uppercase transition-all duration-200 ${
+                          className={`font-sans font-medium text-[10px] tracking-[0.18em] uppercase transition-all duration-200 ${
                             loanTerm === String(yr)
-                              ? 'bg-charcoal text-cream border-charcoal'
-                              : 'border-charcoal/15 text-charcoal/35 hover:border-charcoal/30 hover:text-charcoal'
+                              ? 'text-charcoal'
+                              : 'text-charcoal/30 hover:text-charcoal/60'
                           }`}
                         >
                           {yr}yr
