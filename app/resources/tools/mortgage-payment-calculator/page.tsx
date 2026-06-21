@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import type { jsPDF as JsPDFType } from 'jspdf'
 
 function fmtNum(val: number): string {
   if (!isFinite(val) || isNaN(val)) return '—'
@@ -211,6 +212,139 @@ export default function MortgageCalculatorPage() {
 
     return { loanAmount, pi, monthlyTax, monthlyInsurance, monthlyHoa, monthlyPmi, total }
   }, [purchasePrice, downDollars, interestRate, loanTerm, propertyTax, insurance, hoa, pmi])
+
+  const savePdf = useCallback(async () => {
+    const { jsPDF } = await import('jspdf') as { jsPDF: typeof JsPDFType }
+    const doc = new jsPDF({ unit: 'pt', format: 'letter' })
+
+    const cream = [246, 242, 235] as [number, number, number]
+    const charcoal = [56, 51, 46] as [number, number, number]
+    const mid = [122, 116, 110] as [number, number, number]
+    const divider = [210, 203, 193] as [number, number, number]
+    const W = doc.internal.pageSize.getWidth()
+    const M = 56 // margin
+
+    // Background
+    doc.setFillColor(...cream)
+    doc.rect(0, 0, W, doc.internal.pageSize.getHeight(), 'F')
+
+    // Header bar
+    doc.setFillColor(...charcoal)
+    doc.rect(0, 0, W, 64, 'F')
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(11)
+    doc.setCharSpace(3)
+    doc.setTextColor(246, 242, 235)
+    doc.text('KOAST CAPITAL', M, 40)
+
+    const dateStr = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    doc.setCharSpace(0)
+    doc.setFontSize(9)
+    doc.setTextColor(...mid)
+    doc.text(dateStr, W - M, 40, { align: 'right' })
+
+    // Title
+    doc.setFont('times', 'italic')
+    doc.setFontSize(26)
+    doc.setTextColor(...charcoal)
+    doc.setCharSpace(0)
+    doc.text('Mortgage Payment Scenario', M, 112)
+
+    // Divider
+    doc.setDrawColor(...divider)
+    doc.setLineWidth(0.5)
+    doc.line(M, 124, W - M, 124)
+
+    // Helper: label/value row
+    let y = 148
+    const rowH = 26
+    const col2 = W - M
+
+    function pdfRow(label: string, value: string, bold = false) {
+      doc.setFont('helvetica', 'normal')
+      doc.setFontSize(9)
+      doc.setCharSpace(1.5)
+      doc.setTextColor(...mid)
+      doc.text(label.toUpperCase(), M, y)
+      doc.setFont(bold ? 'helvetica' : 'times', bold ? 'bold' : 'normal')
+      doc.setFontSize(bold ? 15 : 12)
+      doc.setCharSpace(0)
+      doc.setTextColor(...charcoal)
+      doc.text(value, col2, y, { align: 'right' })
+      y += rowH
+    }
+
+    function pdfDivider() {
+      y += 4
+      doc.setDrawColor(...divider)
+      doc.setLineWidth(0.5)
+      doc.line(M, y, W - M, y)
+      y += 16
+    }
+
+    function fmt(n: number) {
+      return n > 0 ? '$' + Math.round(n).toLocaleString('en-US') : '—'
+    }
+
+    // Loan details section
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(8)
+    doc.setCharSpace(2)
+    doc.setTextColor(...mid)
+    doc.text('LOAN DETAILS', M, y)
+    y += 18
+
+    pdfRow('Purchase Price', '$' + Math.round(parseNum(purchasePrice)).toLocaleString('en-US'))
+    pdfRow('Down Payment', fmt(downDollars) + (downPct > 0 ? `  (${downPct.toFixed(2)}%)` : ''))
+    pdfRow('Loan Amount', fmt(results.loanAmount))
+    pdfRow('Interest Rate', parseNum(interestRate).toFixed(3) + '%')
+    pdfRow('Loan Term', loanTerm + ' Years')
+
+    pdfDivider()
+
+    // Monthly payment section
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(8)
+    doc.setCharSpace(2)
+    doc.setTextColor(...mid)
+    doc.text('ESTIMATED MONTHLY PAYMENT', M, y)
+    y += 18
+
+    pdfRow('Principal & Interest', fmt(results.pi))
+    pdfRow('Property Tax', results.monthlyTax > 0 ? fmt(results.monthlyTax) : '—')
+    pdfRow('Homeowners Insurance', results.monthlyInsurance > 0 ? fmt(results.monthlyInsurance) : '—')
+    if (results.monthlyPmi > 0) pdfRow('Mortgage Insurance (PMI/MIP)', fmt(results.monthlyPmi))
+    pdfRow('HOA', results.monthlyHoa > 0 ? fmt(results.monthlyHoa) : '—')
+
+    pdfDivider()
+
+    pdfRow('Total Monthly Payment', fmt(results.total), true)
+
+    // Disclaimer
+    y += 24
+    doc.setDrawColor(...divider)
+    doc.line(M, y, W - M, y)
+    y += 16
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(8)
+    doc.setCharSpace(0)
+    doc.setTextColor(...mid)
+    const disclaimer = 'This scenario is for informational purposes only and is not a loan estimate, pre-approval, commitment to lend, or guarantee of terms. Actual payment may vary based on loan program, property taxes, insurance, HOA dues, mortgage insurance, lender fees, and final underwriting approval.'
+    const lines = doc.splitTextToSize(disclaimer, W - M * 2)
+    doc.text(lines, M, y)
+
+    // Footer
+    const pageH = doc.internal.pageSize.getHeight()
+    doc.setFillColor(...charcoal)
+    doc.rect(0, pageH - 36, W, 36, 'F')
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(8)
+    doc.setCharSpace(1.5)
+    doc.setTextColor(246, 242, 235, 60)
+    doc.text('KOAST CAPITAL  ·  NMLS 2478721  ·  koastcapital.com', M, pageH - 14)
+
+    doc.save('koast-capital-mortgage-scenario.pdf')
+  }, [purchasePrice, downDollars, downPct, interestRate, loanTerm, results])
 
   return (
     <>
@@ -426,7 +560,19 @@ export default function MortgageCalculatorPage() {
             <div className="lg:sticky lg:top-[96px]">
               <div className="border border-charcoal/10 p-8 lg:p-10" style={{ backgroundColor: '#EBE5DC' }}>
 
-                <p className="eyebrow text-charcoal/35 mb-8">Scenario Summary</p>
+                <div className="flex items-center justify-between mb-8">
+                  <p className="eyebrow text-charcoal/35">Scenario Summary</p>
+                  <button
+                    onClick={savePdf}
+                    className="flex items-center gap-2 border border-charcoal/20 px-3 py-1.5 font-sans font-medium text-[9px] tracking-[0.22em] uppercase text-charcoal/45 hover:border-charcoal/40 hover:text-charcoal/70 transition-all duration-200"
+                  >
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 1v6M2 7l3 2 3-2" />
+                      <path d="M1 9h8" />
+                    </svg>
+                    Save as PDF
+                  </button>
+                </div>
 
                 {/* Total */}
                 <div className="mb-8 pb-8 border-b border-charcoal/10">
