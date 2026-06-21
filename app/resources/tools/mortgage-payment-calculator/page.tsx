@@ -214,32 +214,35 @@ export default function MortgageCalculatorPage() {
     <>
       <Nav />
 
-      <div style={{ backgroundColor: '#F6F2EB', paddingTop: '72px' }}>
+      <div style={{ backgroundColor: '#F6F2EB' }}>
 
         {/* ── Hero ── */}
-        <div className="relative border-b border-charcoal/8 overflow-hidden" style={{ backgroundColor: '#EBE5DC' }}>
+        <div className="relative border-b border-charcoal/8 overflow-hidden" style={{ backgroundColor: '#2a2520' }}>
           <Image
             src="/images/mortgage-calculator.png"
             alt="Mortgage Payment Calculator"
             fill
             priority
-            className="object-cover object-center opacity-20"
+            className="object-cover object-center opacity-55"
           />
-          <div className="relative z-10 container-xl py-14 lg:py-20">
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="relative z-10 container-xl pb-14 lg:pb-20" style={{ paddingTop: 'calc(72px + 3.5rem)' }}>
             <nav className="flex items-center gap-2 mb-10" aria-label="Breadcrumb">
-              <Link href="/resources" className="eyebrow text-charcoal/25 hover:text-sage transition-colors duration-200">Resources</Link>
-              <span className="text-charcoal/15 text-[9px]">/</span>
-              <Link href="/resources#tools" className="eyebrow text-charcoal/25 hover:text-sage transition-colors duration-200">Tools</Link>
-              <span className="text-charcoal/15 text-[9px]">/</span>
-              <span className="eyebrow text-charcoal/25">Mortgage Payment Calculator</span>
+              <Link href="/resources" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Resources</Link>
+              <span className="text-cream/20 text-[9px]">/</span>
+              <Link href="/resources#tools" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Tools</Link>
+              <span className="text-cream/20 text-[9px]">/</span>
+              <span className="eyebrow text-cream/40">Mortgage Payment Calculator</span>
             </nav>
 
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-end">
               <div>
-                <p className="eyebrow mb-4">Tools</p>
-                <div className="h-px bg-charcoal/10 mb-6" />
+                <p className="eyebrow text-cream/50 mb-4">Tools</p>
+                <div className="h-px bg-cream/20 mb-6" />
                 <h1
-                  className="font-serif font-light italic text-charcoal leading-[1.2]"
+                  className="font-serif font-light italic text-cream leading-[1.2]"
                   style={{ fontSize: 'clamp(26px, 3vw, 42px)' }}
                 >
                   Estimate payments.<br />
@@ -249,7 +252,7 @@ export default function MortgageCalculatorPage() {
               </div>
               <div>
                 <p
-                  className="font-serif font-light text-charcoal/50"
+                  className="font-serif font-light text-cream/60"
                   style={{ fontSize: 'clamp(14px, 1.1vw, 15px)', lineHeight: '1.9' }}
                 >
                   Small changes in financing structure can have a meaningful impact on monthly payment, cash reserves, and long-term flexibility. Use this tool to explore different scenarios and better understand how purchase price, down payment, and interest rate may affect your mortgage payment.
