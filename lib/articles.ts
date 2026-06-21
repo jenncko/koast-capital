@@ -744,6 +744,7 @@ const articles: Article[] = [
     excerpt: 'Short-term rentals present real investment opportunity — and real complexity. Here\'s how financing works and what investors should consider before acquiring an Airbnb property.',
     categories: ['DSCR'],
     gradient: 'linear-gradient(135deg, #c8c4bc 0%, #908070 100%)',
+    image: '/images/resources-16.png',
     readTime: '6 min read',
     date: 'June 21, 2026',
     featured: false,
