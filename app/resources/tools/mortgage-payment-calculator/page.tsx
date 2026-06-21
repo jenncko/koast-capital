@@ -225,11 +225,11 @@ export default function MortgageCalculatorPage() {
             alt="Mortgage Payment Calculator"
             fill
             priority
-            className="object-cover object-center opacity-55"
+            className="object-cover object-center opacity-80"
           />
           {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/15" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/15 to-black/5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
           <div className="relative z-10 container-xl pb-14 lg:pb-20" style={{ paddingTop: 'calc(72px + 3.5rem)' }}>
             <nav className="flex items-center gap-2 mb-10" aria-label="Breadcrumb">
               <Link href="/resources" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Resources</Link>
