@@ -313,7 +313,7 @@ export default function MortgageCalculatorPage() {
                     {downPct > 0 && (
                       <p className="mt-1 font-sans text-[10px] text-charcoal/25 tracking-wide">
                         {downMode === '$'
-                          ? `${downPct.toFixed(1)}% of purchase price`
+                          ? `${downPct.toFixed(2)}% of purchase price`
                           : `$${Math.round(downDollars).toLocaleString('en-US')} of purchase price`}
                       </p>
                     )}
@@ -446,7 +446,7 @@ export default function MortgageCalculatorPage() {
                   <div className="flex items-baseline justify-between">
                     <span className="eyebrow text-charcoal/30">Down Payment</span>
                     <span className="font-serif font-light text-charcoal text-[14px] tabular-nums">
-                      {downPct > 0 ? `${downPct.toFixed(1)}%` : '—'}
+                      {downPct > 0 ? `${downPct.toFixed(2)}%` : '—'}
                     </span>
                   </div>
                 </div>
