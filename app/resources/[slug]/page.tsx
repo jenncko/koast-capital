@@ -118,15 +118,15 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
           {/* Author bar */}
           <div className="flex flex-wrap items-center gap-4 pb-8 border-b border-charcoal/10">
-            <div className="flex items-center gap-3">
+            <Link href="/#about" className="flex items-center gap-3 group">
               <div className="w-8 h-8 rounded-full flex-shrink-0 overflow-hidden relative">
                 <Image src="/jennifer2.png" alt="Jennifer Ko" fill className="object-cover object-top" />
               </div>
               <div>
-                <p className="font-serif font-light text-charcoal text-sm">Jennifer Ko</p>
+                <p className="font-serif font-light text-charcoal text-sm group-hover:text-sage transition-colors duration-200">Jennifer Ko</p>
                 <p className="eyebrow text-charcoal/35" style={{ fontSize: '9px' }}>Founder, Koast Capital</p>
               </div>
-            </div>
+            </Link>
             <div className="w-px h-5 bg-charcoal/15 hidden sm:block" />
             <span className="eyebrow text-charcoal/35">{article.date}</span>
           </div>
