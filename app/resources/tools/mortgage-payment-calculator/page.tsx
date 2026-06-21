@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -25,6 +25,18 @@ function parseNum(s: string): number {
   return isNaN(n) || n < 0 ? 0 : n
 }
 
+function formatCurrency(raw: string): string {
+  const n = parseFloat(raw.replace(/,/g, ''))
+  if (isNaN(n) || raw === '') return raw
+  return Math.round(n).toLocaleString('en-US')
+}
+
+function formatRate(raw: string): string {
+  const n = parseFloat(raw.replace(/,/g, ''))
+  if (isNaN(n) || raw === '') return raw
+  return n.toFixed(3)
+}
+
 function Field({
   label,
   value,
@@ -32,8 +44,8 @@ function Field({
   prefix,
   suffix,
   placeholder,
-  step,
   hint,
+  format = 'currency',
 }: {
   label: string
   value: string
@@ -41,9 +53,30 @@ function Field({
   prefix?: string
   suffix?: string
   placeholder?: string
-  step?: string
   hint?: string
+  format?: 'currency' | 'rate' | 'none'
 }) {
+  const [focused, setFocused] = useState(false)
+
+  const displayValue = focused
+    ? value
+    : format === 'currency'
+      ? formatCurrency(value)
+      : format === 'rate'
+        ? formatRate(value)
+        : value
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    // strip commas while typing
+    onChange(e.target.value.replace(/,/g, ''))
+  }, [onChange])
+
+  const handleBlur = useCallback(() => {
+    setFocused(false)
+    if (format === 'currency') onChange(formatCurrency(value))
+    if (format === 'rate') onChange(formatRate(value))
+  }, [format, value, onChange])
+
   return (
     <div>
       <div className="flex items-baseline justify-between mb-1.5">
@@ -55,12 +88,13 @@ function Field({
           <span className="pr-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">{prefix}</span>
         )}
         <input
-          type="number"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
+          type="text"
+          inputMode="decimal"
+          value={displayValue}
+          onChange={handleChange}
+          onFocus={() => setFocused(true)}
+          onBlur={handleBlur}
           placeholder={placeholder ?? '0'}
-          min="0"
-          step={step ?? '1'}
           className="flex-1 bg-transparent py-2.5 font-serif font-light text-charcoal text-[15px] placeholder-charcoal/20 focus:outline-none min-w-0"
         />
         {suffix && (
@@ -86,6 +120,44 @@ function SummaryRow({
       <span className={`font-serif font-light tabular-nums ${muted ? 'text-charcoal/40 text-[14px]' : 'text-charcoal text-[15px]'}`}>
         {children}
       </span>
+    </div>
+  )
+}
+
+function DownPaymentInput({ value, onChange, mode }: { value: string; onChange: (v: string) => void; mode: '$' | '%' }) {
+  const [focused, setFocused] = useState(false)
+
+  const displayValue = focused
+    ? value
+    : mode === '$'
+      ? formatCurrency(value)
+      : value === '' ? '' : parseFloat(value).toFixed(1)
+
+  return (
+    <div className="flex items-center border-b border-charcoal/15 focus-within:border-charcoal/35 transition-colors duration-200">
+      {mode === '$' && (
+        <span className="pr-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">$</span>
+      )}
+      <input
+        type="text"
+        inputMode="decimal"
+        value={displayValue}
+        onChange={(e) => onChange(e.target.value.replace(/,/g, ''))}
+        onFocus={() => setFocused(true)}
+        onBlur={() => {
+          setFocused(false)
+          if (mode === '$') onChange(formatCurrency(value))
+          if (mode === '%') {
+            const n = parseFloat(value)
+            if (!isNaN(n)) onChange(n.toFixed(1))
+          }
+        }}
+        placeholder={mode === '$' ? '160,000' : '20.0'}
+        className="flex-1 bg-transparent py-2.5 font-serif font-light text-charcoal text-[15px] placeholder-charcoal/20 focus:outline-none min-w-0"
+      />
+      {mode === '%' && (
+        <span className="pl-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">%</span>
+      )}
     </div>
   )
 }
@@ -233,23 +305,11 @@ export default function MortgageCalculatorPage() {
                         ))}
                       </div>
                     </div>
-                    <div className="flex items-center border-b border-charcoal/15 focus-within:border-charcoal/35 transition-colors duration-200">
-                      {downMode === '$' && (
-                        <span className="pr-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">$</span>
-                      )}
-                      <input
-                        type="number"
-                        value={downPayment}
-                        onChange={(e) => setDownPayment(e.target.value)}
-                        placeholder={downMode === '$' ? '160,000' : '20.0'}
-                        min="0"
-                        step={downMode === '%' ? '0.1' : '1000'}
-                        className="flex-1 bg-transparent py-2.5 font-serif font-light text-charcoal text-[15px] placeholder-charcoal/20 focus:outline-none min-w-0"
-                      />
-                      {downMode === '%' && (
-                        <span className="pl-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">%</span>
-                      )}
-                    </div>
+                    <DownPaymentInput
+                      value={downPayment}
+                      onChange={setDownPayment}
+                      mode={downMode}
+                    />
                     {downPct > 0 && (
                       <p className="mt-1 font-sans text-[10px] text-charcoal/25 tracking-wide">
                         {downMode === '$'
@@ -265,7 +325,7 @@ export default function MortgageCalculatorPage() {
                     onChange={setInterestRate}
                     suffix="%"
                     placeholder="6.500"
-                    step="0.001"
+                    format="rate"
                   />
 
                   <div>
