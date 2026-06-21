@@ -195,11 +195,20 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
               {related.map((a, i) => (
                 <div key={a.slug}>
                   <Link href={`/resources/${a.slug}`} className="group block">
-                    <div className="overflow-hidden mb-4" style={{ aspectRatio: '16/9' }}>
-                      <div
-                        className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
-                        style={{ background: a.gradient }}
-                      />
+                    <div className="overflow-hidden mb-4 relative" style={{ aspectRatio: '16/9' }}>
+                      {a.image ? (
+                        <Image
+                          src={a.image}
+                          alt={a.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                      ) : (
+                        <div
+                          className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+                          style={{ background: a.gradient }}
+                        />
+                      )}
                     </div>
                     <p className="eyebrow text-sage mb-2">{a.categories[0]}</p>
                     <h3
