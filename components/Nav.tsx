@@ -11,11 +11,11 @@ const links: NavLink[] = [
   { label: 'About', href: '/#about' },
   { label: 'Funded Loans', href: '/#funded' },
   {
-    label: 'Programs',
-    href: '/#programs',
+    label: 'Resources',
+    href: '/resources',
     children: [
-      { label: 'Loan Programs', href: '/#programs' },
-      { label: 'Resources', href: '/resources' },
+      { label: 'Articles', href: '/resources' },
+      { label: 'Tools', href: '/resources/tools' },
     ],
   },
   { label: 'Contact', href: '/#book' },
