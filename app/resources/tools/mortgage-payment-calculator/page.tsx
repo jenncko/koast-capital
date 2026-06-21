@@ -172,6 +172,7 @@ export default function MortgageCalculatorPage() {
   const [propertyTax, setPropertyTax] = useState('9000')
   const [insurance, setInsurance] = useState('1800')
   const [hoa, setHoa] = useState('0')
+  const [pmi, setPmi] = useState('0')
   const [advancedOpen, setAdvancedOpen] = useState(false)
 
   // Resolve down payment dollar amount regardless of input mode
@@ -205,10 +206,11 @@ export default function MortgageCalculatorPage() {
     const monthlyTax = parseNum(propertyTax) / 12
     const monthlyInsurance = parseNum(insurance) / 12
     const monthlyHoa = parseNum(hoa)
-    const total = pi + monthlyTax + monthlyInsurance + monthlyHoa
+    const monthlyPmi = parseNum(pmi)
+    const total = pi + monthlyTax + monthlyInsurance + monthlyHoa + monthlyPmi
 
-    return { loanAmount, pi, monthlyTax, monthlyInsurance, monthlyHoa, total }
-  }, [purchasePrice, downDollars, interestRate, loanTerm, propertyTax, insurance, hoa])
+    return { loanAmount, pi, monthlyTax, monthlyInsurance, monthlyHoa, monthlyPmi, total }
+  }, [purchasePrice, downDollars, interestRate, loanTerm, propertyTax, insurance, hoa, pmi])
 
   return (
     <>
@@ -377,7 +379,7 @@ export default function MortgageCalculatorPage() {
                 </button>
 
                 {advancedOpen && (
-                  <div className="mt-7 grid sm:grid-cols-3 gap-x-8 gap-y-7">
+                  <div className="mt-7 grid sm:grid-cols-2 gap-x-8 gap-y-7">
                     <Field
                       label="Property Tax"
                       value={propertyTax}
@@ -398,6 +400,14 @@ export default function MortgageCalculatorPage() {
                       label="HOA Dues"
                       value={hoa}
                       onChange={setHoa}
+                      prefix="$"
+                      placeholder="0"
+                      suffix="/MONTH"
+                    />
+                    <Field
+                      label="Mortgage Insurance (PMI/MIP)"
+                      value={pmi}
+                      onChange={setPmi}
                       prefix="$"
                       placeholder="0"
                       suffix="/MONTH"
@@ -442,6 +452,11 @@ export default function MortgageCalculatorPage() {
                   <SummaryRow label="HOA" muted={results.monthlyHoa === 0}>
                     {results.monthlyHoa > 0
                       ? <Dollars val={results.monthlyHoa} className="font-serif font-light text-charcoal text-[15px] tabular-nums" />
+                      : <span className="font-serif font-light text-charcoal/25 text-[14px]">—</span>}
+                  </SummaryRow>
+                  <SummaryRow label="Mortgage Insurance" muted={results.monthlyPmi === 0}>
+                    {results.monthlyPmi > 0
+                      ? <Dollars val={results.monthlyPmi} className="font-serif font-light text-charcoal text-[15px] tabular-nums" />
                       : <span className="font-serif font-light text-charcoal/25 text-[14px]">—</span>}
                   </SummaryRow>
                 </div>
