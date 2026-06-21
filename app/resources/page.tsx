@@ -10,7 +10,7 @@ import articles from '@/lib/articles'
 
 const FILTERS = [
   'All', 'Conventional', 'FHA', 'VA', 'Jumbo',
-  'Self Employed', 'Investors', 'Professionals', 'Retirement', 'Foreign National', 'Home Equity',
+  'Home Equity', 'Self Employed', 'Investors', 'Professionals', 'Retirement', 'Foreign National',
 ]
 
 function ArticleCard({ article, index, size = 'normal' }: {
