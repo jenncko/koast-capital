@@ -133,11 +133,11 @@ export default function MortgageCalculatorPage() {
     <>
       <Nav />
 
-      <div style={{ backgroundColor: '#F6F2EB', minHeight: '100vh', paddingTop: '72px' }}>
+      <div style={{ paddingTop: '72px' }}>
 
-        {/* ── Hero ── */}
+        {/* ── Top section: Hero left + Inputs right ── */}
         <div className="border-b border-charcoal/8" style={{ backgroundColor: '#EBE5DC' }}>
-          <div className="container-xl pt-14 pb-16 lg:pt-20 lg:pb-24">
+          <div className="container-xl pt-14 pb-16 lg:pt-20 lg:pb-20">
 
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 mb-10 lg:mb-14" aria-label="Breadcrumb">
@@ -152,182 +152,187 @@ export default function MortgageCalculatorPage() {
               <span className="eyebrow text-charcoal/30">Mortgage Calculator</span>
             </nav>
 
-            <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-end">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-              {/* Left — editorial headline */}
-              <div>
-                <p className="eyebrow mb-5">Tools</p>
-                <div className="h-px bg-charcoal/10 mb-7" />
-                <h1
-                  className="font-serif font-light italic text-charcoal leading-[1.2]"
-                  style={{ fontSize: 'clamp(28px, 3.2vw, 48px)' }}
-                >
-                  Estimate payments.<br />
-                  Understand affordability.<br />
-                  Plan with confidence.
-                </h1>
+              {/* Left — editorial hero */}
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <p className="eyebrow mb-5">Tools</p>
+                  <div className="h-px bg-charcoal/10 mb-7" />
+                  <h1
+                    className="font-serif font-light italic text-charcoal leading-[1.2] mb-8"
+                    style={{ fontSize: 'clamp(28px, 3.2vw, 46px)' }}
+                  >
+                    Estimate payments.<br />
+                    Understand affordability.<br />
+                    Plan with confidence.
+                  </h1>
+                  <p
+                    className="font-serif font-light text-charcoal/50 max-w-[420px]"
+                    style={{ fontSize: 'clamp(14px, 1.05vw, 15px)', lineHeight: '1.85' }}
+                  >
+                    Mortgage decisions involve more than interest rates. Use this calculator to explore different scenarios and better understand how purchase price, down payment, and financing structure affect your monthly payment.
+                  </p>
+                </div>
               </div>
 
-              {/* Right — supporting copy */}
-              <div className="lg:pb-1">
-                <p
-                  className="font-serif font-light text-charcoal/55"
-                  style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.85' }}
-                >
-                  Mortgage decisions involve more than interest rates. Use this calculator to explore different scenarios and better understand how purchase price, down payment, and financing structure affect your monthly payment.
-                </p>
+              {/* Right — inputs */}
+              <div>
+                {/* Primary inputs */}
+                <div className="mb-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <p className="eyebrow text-charcoal/40">Loan Details</p>
+                    <div className="flex-1 h-px bg-charcoal/10" />
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <InputField
+                      label="Purchase Price"
+                      value={purchasePrice}
+                      onChange={setPurchasePrice}
+                      prefix="$"
+                      placeholder="800,000"
+                    />
+                    <div>
+                      <label className="eyebrow text-charcoal/45 mb-2 block">
+                        Down Payment{downPct ? <span className="ml-2 normal-case tracking-normal font-sans text-charcoal/30">({downPct})</span> : null}
+                      </label>
+                      <div className="flex items-center border border-charcoal/15 bg-white/50 focus-within:border-sage transition-colors duration-200">
+                        <span className="pl-4 pr-2 font-serif font-light text-charcoal/40 text-[15px] select-none">$</span>
+                        <input
+                          type="number"
+                          value={downPayment}
+                          onChange={(e) => setDownPayment(e.target.value)}
+                          placeholder="160,000"
+                          min="0"
+                          className="flex-1 bg-transparent py-3.5 font-serif font-light text-charcoal text-[15px] placeholder-charcoal/20 focus:outline-none min-w-0 pr-3"
+                        />
+                      </div>
+                    </div>
+                    <InputField
+                      label="Interest Rate"
+                      value={interestRate}
+                      onChange={setInterestRate}
+                      suffix="%"
+                      placeholder="6.500"
+                      step="0.001"
+                    />
+                    <div>
+                      <label className="eyebrow text-charcoal/45 mb-2 block">Loan Term</label>
+                      <div className="flex gap-2">
+                        {[10, 15, 20, 30].map((yr) => (
+                          <button
+                            key={yr}
+                            onClick={() => setLoanTerm(String(yr))}
+                            className={`flex-1 py-3.5 border font-sans font-medium text-[11px] tracking-[0.2em] uppercase transition-all duration-200 ${
+                              loanTerm === String(yr)
+                                ? 'bg-charcoal text-cream border-charcoal'
+                                : 'border-charcoal/15 text-charcoal/45 bg-white/50 hover:border-sage hover:text-charcoal'
+                            }`}
+                          >
+                            {yr}yr
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Optional inputs */}
+                <div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <p className="eyebrow text-charcoal/40">Optional</p>
+                    <div className="flex-1 h-px bg-charcoal/10" />
+                  </div>
+                  <div className="grid sm:grid-cols-3 gap-4">
+                    <InputField
+                      label="Annual Property Tax"
+                      value={propertyTax}
+                      onChange={setPropertyTax}
+                      prefix="$"
+                      placeholder="9,000"
+                    />
+                    <InputField
+                      label="Annual Homeowners Insurance"
+                      value={insurance}
+                      onChange={setInsurance}
+                      prefix="$"
+                      placeholder="1,800"
+                    />
+                    <InputField
+                      label="Monthly HOA"
+                      value={hoa}
+                      onChange={setHoa}
+                      prefix="$"
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
               </div>
 
             </div>
           </div>
         </div>
 
-        {/* ── Calculator ── */}
-        <div className="container-xl py-12 lg:py-16">
-          <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_440px] gap-8 lg:gap-12 items-start">
+        {/* ── Bottom section: Results ── */}
+        <div style={{ backgroundColor: '#F6F2EB' }}>
+          <div className="container-xl py-14 lg:py-20">
 
-            {/* ── Inputs ── */}
-            <div>
-              {/* Primary inputs */}
-              <div className="mb-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <p className="eyebrow text-charcoal/50">Loan Details</p>
-                  <div className="flex-1 h-px bg-charcoal/10" />
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <InputField
-                    label="Purchase Price"
-                    value={purchasePrice}
-                    onChange={setPurchasePrice}
-                    prefix="$"
-                    placeholder="800,000"
-                  />
-                  <div>
-                    <label className="eyebrow text-charcoal/45 mb-2 block">
-                      Down Payment{downPct ? <span className="ml-2 normal-case tracking-normal font-sans text-charcoal/30">({downPct})</span> : null}
-                    </label>
-                    <div className="flex items-center border border-charcoal/15 bg-white/60 focus-within:border-sage transition-colors duration-200">
-                      <span className="pl-4 pr-2 font-serif font-light text-charcoal/40 text-[15px] select-none">$</span>
-                      <input
-                        type="number"
-                        value={downPayment}
-                        onChange={(e) => setDownPayment(e.target.value)}
-                        placeholder="160,000"
-                        min="0"
-                        className="flex-1 bg-transparent py-3.5 font-serif font-light text-charcoal text-[15px] placeholder-charcoal/20 focus:outline-none min-w-0 pr-3"
-                      />
-                    </div>
-                  </div>
-                  <InputField
-                    label="Interest Rate"
-                    value={interestRate}
-                    onChange={setInterestRate}
-                    suffix="%"
-                    placeholder="6.500"
-                    step="0.001"
-                  />
-                  <div>
-                    <label className="eyebrow text-charcoal/45 mb-2 block">Loan Term</label>
-                    <div className="flex gap-2">
-                      {[10, 15, 20, 30].map((yr) => (
-                        <button
-                          key={yr}
-                          onClick={() => setLoanTerm(String(yr))}
-                          className={`flex-1 py-3.5 border font-sans font-medium text-[11px] tracking-[0.2em] uppercase transition-all duration-200 ${
-                            loanTerm === String(yr)
-                              ? 'bg-charcoal text-cream border-charcoal'
-                              : 'border-charcoal/15 text-charcoal/45 bg-white/60 hover:border-sage hover:text-charcoal'
-                          }`}
-                        >
-                          {yr}yr
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Optional inputs */}
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <p className="eyebrow text-charcoal/50">Optional</p>
-                  <div className="flex-1 h-px bg-charcoal/10" />
-                </div>
-                <div className="grid sm:grid-cols-3 gap-4">
-                  <InputField
-                    label="Annual Property Tax"
-                    value={propertyTax}
-                    onChange={setPropertyTax}
-                    prefix="$"
-                    placeholder="9,000"
-                  />
-                  <InputField
-                    label="Annual Homeowners Insurance"
-                    value={insurance}
-                    onChange={setInsurance}
-                    prefix="$"
-                    placeholder="1,800"
-                  />
-                  <InputField
-                    label="Monthly HOA"
-                    value={hoa}
-                    onChange={setHoa}
-                    prefix="$"
-                    placeholder="0"
-                  />
-                </div>
-              </div>
+            <div className="flex items-center gap-6 mb-10">
+              <p className="eyebrow text-charcoal/40">Estimated Monthly Payment</p>
+              <div className="flex-1 h-px bg-charcoal/10" />
             </div>
 
-            {/* ── Results ── */}
-            <div className="lg:sticky lg:top-[96px]">
-              <div
-                className="border border-charcoal/12 p-7 lg:p-8"
-                style={{ backgroundColor: '#EBE5DC', boxShadow: '0 2px 24px rgba(56,51,46,0.06)' }}
-              >
-                <p className="eyebrow text-charcoal/40 mb-6">Estimated Monthly Payment</p>
+            {/* Total + breakdown in a horizontal row on desktop */}
+            <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-20 items-start mb-10">
 
-                {/* Total — hero number */}
-                <div className="pb-6 mb-2 border-b border-charcoal/10">
-                  <span
-                    className="font-serif font-light text-charcoal"
-                    style={{ fontSize: 'clamp(36px, 4vw, 52px)', letterSpacing: '-0.01em' }}
-                  >
-                    {fmt(results.total)}
-                  </span>
-                  <span className="eyebrow text-charcoal/30 ml-3">/mo</span>
-                </div>
+              {/* Big number */}
+              <div>
+                <span
+                  className="font-serif font-light text-charcoal"
+                  style={{ fontSize: 'clamp(48px, 6vw, 80px)', letterSpacing: '-0.02em', lineHeight: 1 }}
+                >
+                  {fmt(results.total)}
+                </span>
+                <span className="eyebrow text-charcoal/30 ml-3">/mo</span>
+                <p className="eyebrow text-charcoal/25 mt-3">Total Estimated Payment</p>
+              </div>
 
-                {/* Breakdown */}
-                <div className="divide-y divide-charcoal/6">
-                  <ResultRow label="Principal &amp; Interest" value={fmt(results.pi)} />
-                  <ResultRow label="Property Tax" value={results.monthlyTax > 0 ? fmt(results.monthlyTax) : '—'} />
-                  <ResultRow label="Homeowners Insurance" value={results.monthlyInsurance > 0 ? fmt(results.monthlyInsurance) : '—'} />
-                  <ResultRow label="HOA" value={results.monthlyHoa > 0 ? fmt(results.monthlyHoa) : '—'} />
-                </div>
-
-                {/* Loan amount */}
-                <div className="mt-6 pt-5 border-t border-charcoal/10">
-                  <div className="flex items-baseline justify-between">
-                    <span className="eyebrow text-charcoal/40">Loan Amount</span>
-                    <span className="font-serif font-light text-charcoal text-[16px]">{fmt(results.loanAmount)}</span>
+              {/* Breakdown grid */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-charcoal/10 divide-y sm:divide-y-0 sm:divide-x divide-charcoal/8"
+                style={{ backgroundColor: '#EBE5DC' }}>
+                {[
+                  { label: 'Principal & Interest', value: fmt(results.pi) },
+                  { label: 'Property Tax', value: results.monthlyTax > 0 ? fmt(results.monthlyTax) : '—' },
+                  { label: 'Homeowners Insurance', value: results.monthlyInsurance > 0 ? fmt(results.monthlyInsurance) : '—' },
+                  { label: 'HOA', value: results.monthlyHoa > 0 ? fmt(results.monthlyHoa) : '—' },
+                ].map((row) => (
+                  <div key={row.label} className="px-6 py-5 flex flex-col gap-2">
+                    <span className="eyebrow text-charcoal/35">{row.label}</span>
+                    <span className="font-serif font-light text-charcoal text-[20px] tabular-nums">{row.value}</span>
                   </div>
-                </div>
+                ))}
+              </div>
 
-                {/* Disclaimer */}
+            </div>
+
+            {/* Loan amount + disclaimer + CTA */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pt-8 border-t border-charcoal/10">
+              <div className="flex items-baseline gap-8">
+                <div>
+                  <p className="eyebrow text-charcoal/35 mb-1.5">Loan Amount</p>
+                  <p className="font-serif font-light text-charcoal text-[20px] tabular-nums">{fmt(results.loanAmount)}</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10">
                 <p
-                  className="mt-6 font-serif font-light text-charcoal/35 leading-relaxed"
+                  className="font-serif font-light text-charcoal/35 max-w-[420px]"
                   style={{ fontSize: '11px', lineHeight: '1.7' }}
                 >
                   This calculator is for informational purposes only. Actual payments may vary based on loan program, property taxes, homeowner&apos;s insurance, HOA dues, mortgage insurance, and final loan terms.
                 </p>
-              </div>
-
-              {/* CTA */}
-              <div className="mt-5">
                 <a
                   href="/#book"
-                  className="group flex items-center justify-between gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:bg-sage hover:border-sage hover:text-cream transition-all duration-300 w-full"
+                  className="group flex items-center gap-4 px-7 py-4 border border-charcoal/20 text-charcoal eyebrow hover:bg-sage hover:border-sage hover:text-cream transition-all duration-300 whitespace-nowrap flex-shrink-0"
                 >
                   Book a Conversation
                   <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round"
