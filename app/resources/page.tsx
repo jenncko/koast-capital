@@ -247,6 +247,21 @@ export default function ResourcesPage() {
               </div>
             </section>
 
+            {/* ── All Articles ── */}
+            <section className="py-12 lg:py-16 border-t border-charcoal/8">
+              <div className="container-xl">
+                <div className="flex items-center gap-6 mb-10">
+                  <p className="eyebrow">All Articles</p>
+                  <div className="flex-1 h-px bg-charcoal/10" />
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+                  {rest.map((a, i) => (
+                    <ArticleCard key={a.slug} article={a} index={i} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* ── Tools ── */}
             <section className="py-12 lg:py-16 border-t border-charcoal/8">
               <div className="container-xl">
@@ -310,21 +325,6 @@ export default function ResourcesPage() {
                         </span>
                       </div>
                     </Link>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* ── All Articles ── */}
-            <section className="py-12 lg:py-16 border-t border-charcoal/8">
-              <div className="container-xl">
-                <div className="flex items-center gap-6 mb-10">
-                  <p className="eyebrow">All Articles</p>
-                  <div className="flex-1 h-px bg-charcoal/10" />
-                </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-                  {rest.map((a, i) => (
-                    <ArticleCard key={a.slug} article={a} index={i} />
                   ))}
                 </div>
               </div>
