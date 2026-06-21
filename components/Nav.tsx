@@ -19,7 +19,6 @@ const links: NavLink[] = [
       { label: 'Tools', href: '/resources#tools' },
     ],
   },
-  { label: 'Contact', href: '/#book' },
   { label: 'Apply', href: '/#apply' },
 ]
 
