@@ -233,13 +233,11 @@ export default function MortgageCalculatorPage() {
               <Link href="/resources" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Resources</Link>
               <span className="text-cream/20 text-[9px]">/</span>
               <Link href="/resources#tools" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Tools</Link>
-              <span className="text-cream/20 text-[9px]">/</span>
-              <span className="eyebrow text-cream/40">Mortgage Payment Calculator</span>
             </nav>
 
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-end">
               <div>
-                <p className="eyebrow text-cream/50 mb-4">Tools</p>
+                <p className="eyebrow text-cream/50 mb-4">Mortgage Payment Planner</p>
                 <div className="h-px bg-cream/20 mb-6" />
                 <h1
                   className="font-serif font-light italic text-cream leading-[1.2]"
