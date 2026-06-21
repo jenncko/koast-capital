@@ -247,6 +247,74 @@ export default function ResourcesPage() {
               </div>
             </section>
 
+            {/* ── Tools ── */}
+            <section className="py-12 lg:py-16 border-t border-charcoal/8">
+              <div className="container-xl">
+                <div className="flex items-center gap-6 mb-10">
+                  <p className="eyebrow">Tools</p>
+                  <div className="flex-1 h-px bg-charcoal/10" />
+                </div>
+                <div className="mb-10">
+                  <h2
+                    className="font-serif font-light text-charcoal mb-3"
+                    style={{ fontSize: 'clamp(22px, 2vw, 30px)' }}
+                  >
+                    Helpful Calculators
+                  </h2>
+                  <p
+                    className="font-serif font-light text-charcoal/55 max-w-xl"
+                    style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.8' }}
+                  >
+                    Estimate payments, evaluate rental cash flow, and compare financing options with simple tools designed to support thoughtful mortgage decisions.
+                  </p>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
+                  {[
+                    {
+                      title: 'Mortgage Payment Calculator',
+                      description: 'Estimate your monthly principal and interest payment based on loan amount, interest rate, and loan term.',
+                      href: '/resources/tools/mortgage-payment-calculator',
+                    },
+                    {
+                      title: 'DSCR Calculator',
+                      description: 'Calculate a property\'s debt service coverage ratio using monthly rental income and estimated PITIA.',
+                      href: '/resources/tools/dscr-calculator',
+                    },
+                  ].map((tool) => (
+                    <Link
+                      key={tool.title}
+                      href={tool.href}
+                      className="group flex flex-col justify-between p-7 lg:p-8 border border-charcoal/12 bg-white/70 hover:border-charcoal/25 transition-all duration-300"
+                      style={{ boxShadow: '0 2px 20px rgba(56,51,46,0.05)' }}
+                    >
+                      <div>
+                        <h3
+                          className="font-serif font-light text-charcoal mb-3 group-hover:text-stone transition-colors duration-300"
+                          style={{ fontSize: 'clamp(16px, 1.3vw, 20px)' }}
+                        >
+                          {tool.title}
+                        </h3>
+                        <p
+                          className="font-serif font-light text-charcoal/55"
+                          style={{ fontSize: '14px', lineHeight: '1.75' }}
+                        >
+                          {tool.description}
+                        </p>
+                      </div>
+                      <div className="mt-6">
+                        <span className="eyebrow text-sage inline-flex items-center gap-1.5 group-hover:translate-x-0.5 transition-transform duration-300">
+                          Open Calculator
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                            <path d="M2 6h8M6 2l4 4-4 4" />
+                          </svg>
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* ── All Articles ── */}
             <section className="py-12 lg:py-16 border-t border-charcoal/8">
               <div className="container-xl">
