@@ -132,7 +132,7 @@ function DownPaymentInput({ value, onChange, mode }: { value: string; onChange: 
     ? value
     : mode === '$'
       ? formatCurrency(value)
-      : value === '' ? '' : parseFloat(value).toFixed(1)
+      : value === '' ? '' : parseFloat(value).toFixed(2)
 
   return (
     <div className="flex items-center border-b border-charcoal/15 focus-within:border-charcoal/35 transition-colors duration-200">
@@ -150,7 +150,7 @@ function DownPaymentInput({ value, onChange, mode }: { value: string; onChange: 
           if (mode === '$') onChange(formatCurrency(value))
           if (mode === '%') {
             const n = parseFloat(value)
-            if (!isNaN(n)) onChange(n.toFixed(1))
+            if (!isNaN(n)) onChange(n.toFixed(2))
           }
         }}
         placeholder={mode === '$' ? '160,000' : '20.0'}
@@ -299,7 +299,7 @@ export default function MortgageCalculatorPage() {
                               // convert value when switching modes
                               const pp = parseNum(purchasePrice)
                               if (mode === '%' && pp > 0) {
-                                setDownPayment(((parseNum(downPayment) / pp) * 100).toFixed(1))
+                                setDownPayment(((parseNum(downPayment) / pp) * 100).toFixed(2))
                               } else {
                                 setDownPayment(Math.round((parseNum(downPayment) / 100) * pp).toString())
                               }
