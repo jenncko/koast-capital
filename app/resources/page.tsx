@@ -45,7 +45,7 @@ function ArticleCard({ article, index, size = 'normal' }: {
         </div>
 
         {/* Category */}
-        <p className="eyebrow text-sage mb-2">{article.categories[0]}</p>
+        <p className="eyebrow text-sage mb-2">{article.categories.slice(0, 2).join(' · ')}</p>
 
         {/* Title */}
         <h3

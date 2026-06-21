@@ -157,7 +157,7 @@ const articles: Article[] = [
     slug: 'buying-before-selling',
     title: 'How to Buy a Home Before Selling Your Current One',
     excerpt: 'You don\'t have to sell before you can buy. Bridge financing and strategic planning can make the transition seamless in any market.',
-    categories: ['Hard Money', 'Conventional'],
+    categories: ['Bridge Loan', 'Hard Money', 'Conventional'],
     gradient: 'linear-gradient(135deg, #d4c8be 0%, #C4A49E 100%)',
     image: '/images/resources-4.png',
     readTime: '7 min read',
