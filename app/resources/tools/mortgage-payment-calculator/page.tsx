@@ -379,12 +379,12 @@ export default function MortgageCalculatorPage() {
                 {advancedOpen && (
                   <div className="mt-7 grid sm:grid-cols-3 gap-x-8 gap-y-7">
                     <Field
-                      label="Annual Property Tax"
+                      label="Property Tax"
                       value={propertyTax}
                       onChange={setPropertyTax}
                       prefix="$"
                       placeholder="9,000"
-                      hint="per year"
+                      suffix="/YEAR"
                     />
                     <Field
                       label="Homeowners Insurance"
@@ -392,15 +392,15 @@ export default function MortgageCalculatorPage() {
                       onChange={setInsurance}
                       prefix="$"
                       placeholder="1,800"
-                      hint="per year"
+                      suffix="/YEAR"
                     />
                     <Field
-                      label="Monthly HOA"
+                      label="HOA Dues"
                       value={hoa}
                       onChange={setHoa}
                       prefix="$"
                       placeholder="0"
-                      hint="per month"
+                      suffix="/MONTH"
                     />
                   </div>
                 )}
