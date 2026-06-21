@@ -130,8 +130,6 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             </div>
             <div className="w-px h-5 bg-charcoal/15 hidden sm:block" />
             <span className="eyebrow text-charcoal/35">{article.date}</span>
-            <div className="w-px h-5 bg-charcoal/15 hidden sm:block" />
-            <span className="eyebrow text-charcoal/35">{article.readTime}</span>
           </div>
         </div>
       </div>

@@ -65,7 +65,6 @@ function ArticleCard({ article, index, size = 'normal' }: {
 
         {/* Footer */}
         <div className="flex items-center justify-between">
-          <span className="eyebrow text-charcoal/30">{article.readTime}</span>
           <span className="eyebrow text-sage group-hover:translate-x-0.5 transition-transform duration-300 inline-flex items-center gap-1.5">
             Read Article
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
