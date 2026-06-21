@@ -368,7 +368,7 @@ const articles: Article[] = [
     slug: 'what-is-a-hard-money-loan',
     title: 'What Exactly Is a Hard Money Loan?',
     excerpt: 'Hard money loans are equity-based, privately funded, and built for speed. Here\'s when they make sense — and when they don\'t.',
-    categories: ['Hard Money', 'Bridge Loan'],
+    categories: ['Hard Money'],
     gradient: 'linear-gradient(135deg, #c8bfb4 0%, #8a7d70 100%)',
     image: '/images/resources-9.png',
     readTime: '5 min read',
