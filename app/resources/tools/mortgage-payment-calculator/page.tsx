@@ -397,17 +397,17 @@ export default function MortgageCalculatorPage() {
                       suffix="/YEAR"
                     />
                     <Field
-                      label="HOA Dues"
-                      value={hoa}
-                      onChange={setHoa}
+                      label="Mortgage Insurance (PMI/MIP)"
+                      value={pmi}
+                      onChange={setPmi}
                       prefix="$"
                       placeholder="0"
                       suffix="/MONTH"
                     />
                     <Field
-                      label="Mortgage Insurance (PMI/MIP)"
-                      value={pmi}
-                      onChange={setPmi}
+                      label="HOA Dues"
+                      value={hoa}
+                      onChange={setHoa}
                       prefix="$"
                       placeholder="0"
                       suffix="/MONTH"
@@ -449,14 +449,14 @@ export default function MortgageCalculatorPage() {
                       ? <Dollars val={results.monthlyInsurance} className="font-serif font-light text-charcoal text-[15px] tabular-nums" />
                       : <span className="font-serif font-light text-charcoal/25 text-[14px]">—</span>}
                   </SummaryRow>
-                  <SummaryRow label="HOA" muted={results.monthlyHoa === 0}>
-                    {results.monthlyHoa > 0
-                      ? <Dollars val={results.monthlyHoa} className="font-serif font-light text-charcoal text-[15px] tabular-nums" />
-                      : <span className="font-serif font-light text-charcoal/25 text-[14px]">—</span>}
-                  </SummaryRow>
                   <SummaryRow label="Mortgage Insurance" muted={results.monthlyPmi === 0}>
                     {results.monthlyPmi > 0
                       ? <Dollars val={results.monthlyPmi} className="font-serif font-light text-charcoal text-[15px] tabular-nums" />
+                      : <span className="font-serif font-light text-charcoal/25 text-[14px]">—</span>}
+                  </SummaryRow>
+                  <SummaryRow label="HOA" muted={results.monthlyHoa === 0}>
+                    {results.monthlyHoa > 0
+                      ? <Dollars val={results.monthlyHoa} className="font-serif font-light text-charcoal text-[15px] tabular-nums" />
                       : <span className="font-serif font-light text-charcoal/25 text-[14px]">—</span>}
                   </SummaryRow>
                 </div>
