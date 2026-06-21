@@ -135,33 +135,50 @@ export default function MortgageCalculatorPage() {
 
       <div style={{ backgroundColor: '#F6F2EB', minHeight: '100vh', paddingTop: '72px' }}>
 
-        {/* ── Page header ── */}
+        {/* ── Hero ── */}
         <div className="border-b border-charcoal/8" style={{ backgroundColor: '#EBE5DC' }}>
-          <div className="container-xl py-12 lg:py-16">
-            <nav className="flex items-center gap-2 mb-6" aria-label="Breadcrumb">
-              <Link href="/resources" className="eyebrow text-charcoal/35 hover:text-sage transition-colors duration-200">
+          <div className="container-xl pt-14 pb-16 lg:pt-20 lg:pb-24">
+
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 mb-10 lg:mb-14" aria-label="Breadcrumb">
+              <Link href="/resources" className="eyebrow text-charcoal/30 hover:text-sage transition-colors duration-200">
                 Resources
               </Link>
               <span className="text-charcoal/20 text-[10px]">/</span>
-              <Link href="/resources#tools" className="eyebrow text-charcoal/35 hover:text-sage transition-colors duration-200">
+              <Link href="/resources#tools" className="eyebrow text-charcoal/30 hover:text-sage transition-colors duration-200">
                 Tools
               </Link>
               <span className="text-charcoal/20 text-[10px]">/</span>
-              <span className="eyebrow text-charcoal/35">Mortgage Calculator</span>
+              <span className="eyebrow text-charcoal/30">Mortgage Calculator</span>
             </nav>
-            <p className="eyebrow text-charcoal/35 mb-4">Tools</p>
-            <h1
-              className="font-serif font-light text-charcoal leading-tight mb-4"
-              style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}
-            >
-              Mortgage Payment Calculator
-            </h1>
-            <p
-              className="font-serif font-light text-charcoal/55 max-w-[560px]"
-              style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.8' }}
-            >
-              Estimate your monthly mortgage payment based on purchase price, down payment, interest rate, and loan term.
-            </p>
+
+            <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-end">
+
+              {/* Left — editorial headline */}
+              <div>
+                <p className="eyebrow mb-5">Tools</p>
+                <div className="h-px bg-charcoal/10 mb-7" />
+                <h1
+                  className="font-serif font-light italic text-charcoal leading-[1.2]"
+                  style={{ fontSize: 'clamp(28px, 3.2vw, 48px)' }}
+                >
+                  Estimate payments.<br />
+                  Understand affordability.<br />
+                  Plan with confidence.
+                </h1>
+              </div>
+
+              {/* Right — supporting copy */}
+              <div className="lg:pb-1">
+                <p
+                  className="font-serif font-light text-charcoal/55"
+                  style={{ fontSize: 'clamp(14px, 1.1vw, 16px)', lineHeight: '1.85' }}
+                >
+                  Mortgage decisions involve more than interest rates. Use this calculator to explore different scenarios and better understand how purchase price, down payment, and financing structure affect your monthly payment.
+                </p>
+              </div>
+
+            </div>
           </div>
         </div>
 
