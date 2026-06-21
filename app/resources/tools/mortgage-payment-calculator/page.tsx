@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 
@@ -216,8 +217,15 @@ export default function MortgageCalculatorPage() {
       <div style={{ backgroundColor: '#F6F2EB', paddingTop: '72px' }}>
 
         {/* ── Hero ── */}
-        <div style={{ backgroundColor: '#EBE5DC' }} className="border-b border-charcoal/8">
-          <div className="container-xl py-14 lg:py-20">
+        <div className="relative border-b border-charcoal/8 overflow-hidden" style={{ backgroundColor: '#EBE5DC' }}>
+          <Image
+            src="/images/mortgage-calculator.png"
+            alt="Mortgage Payment Calculator"
+            fill
+            priority
+            className="object-cover object-center opacity-20"
+          />
+          <div className="relative z-10 container-xl py-14 lg:py-20">
             <nav className="flex items-center gap-2 mb-10" aria-label="Breadcrumb">
               <Link href="/resources" className="eyebrow text-charcoal/25 hover:text-sage transition-colors duration-200">Resources</Link>
               <span className="text-charcoal/15 text-[9px]">/</span>
