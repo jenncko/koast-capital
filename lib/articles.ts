@@ -114,7 +114,7 @@ const articles: Article[] = [
     slug: 'bank-statement-loans',
     title: 'Bank Statement Loans for Self-Employed Borrowers',
     excerpt: 'If your tax returns don\'t reflect your actual cash flow, a bank statement loan may be the solution you\'ve been looking for.',
-    categories: ['Bank Statement', 'P&L'],
+    categories: ['Self Employed'],
     gradient: 'linear-gradient(135deg, #c8d4cc 0%, #6a8a86 100%)',
     image: '/images/resources-3.png',
     readTime: '5 min read',
