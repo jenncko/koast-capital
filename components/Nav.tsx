@@ -16,7 +16,7 @@ const links: NavLink[] = [
     children: [
       { label: 'Loan Programs', href: '/#programs' },
       { label: 'Articles', href: '/resources' },
-      { label: 'Tools', href: '/resources/tools' },
+      { label: 'Tools', href: '/resources#tools' },
     ],
   },
   { label: 'Contact', href: '/#book' },

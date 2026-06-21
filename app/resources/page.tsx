@@ -263,7 +263,7 @@ export default function ResourcesPage() {
             </section>
 
             {/* ── Tools ── */}
-            <section className="py-12 lg:py-16 border-t border-charcoal/8">
+            <section id="tools" className="py-12 lg:py-16 border-t border-charcoal/8">
               <div className="container-xl">
                 <div className="flex items-center gap-6 mb-10">
                   <p className="eyebrow">Tools</p>
