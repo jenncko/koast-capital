@@ -197,7 +197,7 @@ export default function LoanPrograms() {
 
                 {/* Link */}
                 <a
-                  href="#book"
+                  href="/resources"
                   className={`mt-6 inline-flex items-center gap-2 eyebrow transition-colors duration-200 group ${
                     prog.dark
                       ? 'text-cream/45 hover:text-cream'
