@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 const loans = [
   {
-    image: '/funded-1.jpg',
+    image: '/funded-1.png',
     fallback: 'linear-gradient(175deg, #d4dcba 0%, #A8B08E 60%, #7a8a6a 100%)',
     location: 'Irvine, CA',
     tag: 'No Ratio · Cash-Out Refinance',
@@ -15,7 +15,7 @@ const loans = [
       "For this self-employed business owner, traditional income documentation wasn't necessary. By leveraging a free-and-clear investment property, we structured a No Ratio cash-out refinance based solely on equity, delivering a straightforward solution with minimal documentation and efficient execution.",
   },
   {
-    image: '/funded-2.jpg',
+    image: '/funded-2.png',
     fallback: 'linear-gradient(175deg, #e8e0d8 0%, #c4a49e 60%, #a0807a 100%)',
     location: 'Scottsdale, AZ',
     tag: 'DSCR · Cash-Out Refinance',
@@ -24,7 +24,7 @@ const loans = [
       "For this experienced investor and builder, we refinanced an existing hard money loan into a lower-rate DSCR program. Qualification was based on the property's rental income rather than personal tax returns, providing improved cash flow through an interest-only adjustable-rate mortgage structure.",
   },
   {
-    image: '/funded-3.jpg',
+    image: '/funded-3.png',
     fallback: 'linear-gradient(175deg, #ede8dc 0%, #c8d0aa 60%, #A8B08E 100%)',
     location: 'San Jose, CA',
     tag: 'Jumbo · Purchase',
@@ -33,7 +33,7 @@ const loans = [
       'A young technology professional couple purchased their first home in Silicon Valley. With strong W-2 income, excellent credit, and a competitive market to navigate, we guided them through the pre-approval process, financing strategy, and successful closing of their jumbo loan.',
   },
   {
-    image: '/funded-4.jpg',
+    image: '/funded-4.png',
     fallback: 'linear-gradient(175deg, #d8ddd0 0%, #9aaa80 60%, #6b7a52 100%)',
     location: 'Las Vegas, NV',
     tag: 'P&L · Purchase',
@@ -42,7 +42,7 @@ const loans = [
       'A retired investor acquired a luxury Toll Brothers residence in the highly desirable Summerlin community. Through a Profit & Loss loan program, we structured financing based on CPA-prepared P&L rather than traditional income documentation, creating a streamlined path to homeownership while preserving financial flexibility.',
   },
   {
-    image: '/funded-5.jpg',
+    image: '/funded-5.png',
     fallback: 'linear-gradient(175deg, #dce4e8 0%, #9ab0bc 60%, #6a8a96 100%)',
     location: 'Newport Beach, CA',
     tag: 'Bank Statement · Cash-Out Refinance',
@@ -51,7 +51,7 @@ const loans = [
       'Business owner leveraging home equity to fund a new venture. Approved on 24-month bank statements with no tax return required.',
   },
   {
-    image: '/funded-6.jpg',
+    image: '/funded-6.png',
     fallback: 'linear-gradient(175deg, #e4dcd4 0%, #b89880 60%, #8a6a58 100%)',
     location: 'Henderson, NV',
     tag: 'DSCR · Purchase',
