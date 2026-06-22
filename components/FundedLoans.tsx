@@ -60,7 +60,7 @@ const loans = [
       'Out-of-state investor expanding a short-term rental portfolio. Qualified on projected rental income with no W-2 required.',
   },
   {
-    image: '/funded-7.jpg',
+    image: '/funded-7.png',
     fallback: 'linear-gradient(175deg, #e8ece0 0%, #b8c8a0 60%, #8a9a70 100%)',
     location: 'San Diego, CA',
     tag: 'Jumbo · Purchase',
@@ -69,7 +69,7 @@ const loans = [
       'Coastal luxury purchase requiring a non-warrantable condo waiver. Secured financing where traditional channels declined.',
   },
   {
-    image: '/funded-8.jpg',
+    image: '/funded-8.png',
     fallback: 'linear-gradient(175deg, #e0dce8 0%, #a89ec0 60%, #786890 100%)',
     location: 'Phoenix, AZ',
     tag: 'Conventional · Purchase',
@@ -78,7 +78,7 @@ const loans = [
       'Relocating family on a tight timeline. Clear-to-close in 18 days with a seamless remote signing process.',
   },
   {
-    image: '/funded-9.jpg',
+    image: '/funded-9.png',
     fallback: 'linear-gradient(175deg, #dce8e4 0%, #90b0a8 60%, #607870 100%)',
     location: 'Bellevue, WA',
     tag: 'No Ratio · Purchase',
@@ -87,7 +87,7 @@ const loans = [
       'Recently retired executive with substantial assets and no traditional income. Qualified on liquid assets — no employment verification needed.',
   },
   {
-    image: '/funded-10.jpg',
+    image: '/funded-10.png',
     fallback: 'linear-gradient(175deg, #e8e4d8 0%, #c0b090 60%, #907858 100%)',
     location: 'Reno, NV',
     tag: 'Hard Money · Fix & Flip',
@@ -96,7 +96,7 @@ const loans = [
       "Distressed property acquisition requiring fast close. Funded in 9 days — well ahead of the seller's deadline.",
   },
   {
-    image: '/funded-11.jpg',
+    image: '/funded-11.png',
     fallback: 'linear-gradient(175deg, #dce0e8 0%, #98a8c0 60%, #687890 100%)',
     location: 'Pasadena, CA',
     tag: 'FHA · Purchase',
@@ -105,7 +105,7 @@ const loans = [
       'First-generation homebuyer navigating a high-cost market. Structured the loan to maximize down payment assistance and minimize out-of-pocket costs.',
   },
   {
-    image: '/funded-12.jpg',
+    image: '/funded-12.png',
     fallback: 'linear-gradient(175deg, #e0e8dc 0%, #a0b898 60%, #708868 100%)',
     location: 'Scottsdale, AZ',
     tag: 'DSCR · Cash-Out Refinance',
