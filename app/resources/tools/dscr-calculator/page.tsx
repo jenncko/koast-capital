@@ -1,0 +1,411 @@
+'use client'
+
+import React, { useState, useMemo } from 'react'
+import Link from 'next/link'
+import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
+
+function parseNum(s: string): number {
+  const n = parseFloat(s.replace(/,/g, ''))
+  return isNaN(n) || n < 0 ? 0 : n
+}
+
+function formatCurrency(raw: string): string {
+  const n = parseFloat(raw.replace(/,/g, ''))
+  if (isNaN(n) || raw === '') return raw
+  return Math.round(n).toLocaleString('en-US')
+}
+
+function formatRate(raw: string): string {
+  const n = parseFloat(raw)
+  if (isNaN(n) || raw === '') return raw
+  return n.toFixed(3)
+}
+
+function fmtDollar(n: number): string {
+  if (!isFinite(n) || isNaN(n)) return '—'
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+function fmtRatio(n: number): string {
+  if (!isFinite(n) || isNaN(n) || n === 0) return '—'
+  return n.toFixed(4)
+}
+
+function DSCRBadge({ ratio }: { ratio: number }) {
+  if (ratio === 0 || !isFinite(ratio)) return null
+  const good = ratio >= 1.25
+  const borderline = ratio >= 1.0 && ratio < 1.25
+  return (
+    <span
+      className="font-sans font-medium text-[9px] tracking-[0.2em] uppercase px-2 py-0.5 border ml-2"
+      style={{
+        color: good ? '#6b7a52' : borderline ? '#8a6a30' : '#8a3030',
+        borderColor: good ? '#a8b08e' : borderline ? '#c8a060' : '#c08080',
+        backgroundColor: good ? '#f0f3ea' : borderline ? '#f5edd8' : '#f5e8e8',
+      }}
+    >
+      {good ? 'Eligible' : borderline ? 'Borderline' : 'Below Min'}
+    </span>
+  )
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+  prefix,
+  suffix,
+  placeholder,
+  format = 'currency',
+  hint,
+}: {
+  label: string
+  value: string
+  onChange: (v: string) => void
+  prefix?: string
+  suffix?: string
+  placeholder?: string
+  format?: 'currency' | 'rate' | 'integer' | 'none'
+  hint?: string
+}) {
+  const [focused, setFocused] = useState(false)
+
+  const displayValue = focused
+    ? value
+    : format === 'currency' ? formatCurrency(value)
+    : format === 'rate' ? formatRate(value)
+    : value
+
+  const handleBlur = () => {
+    setFocused(false)
+    if (format === 'currency') onChange(formatCurrency(value))
+    if (format === 'rate') onChange(formatRate(value))
+  }
+
+  return (
+    <div>
+      <div className="flex items-baseline justify-between mb-1.5">
+        <label className="eyebrow text-charcoal/40">{label}</label>
+        {hint && <span className="font-sans text-[10px] text-charcoal/25 tracking-wide">{hint}</span>}
+      </div>
+      <div className="flex items-center border-b border-charcoal/15 focus-within:border-charcoal/35 transition-colors duration-200">
+        {prefix && <span className="pr-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">{prefix}</span>}
+        <input
+          type="text"
+          inputMode="decimal"
+          value={displayValue}
+          onChange={(e) => onChange(e.target.value.replace(/,/g, ''))}
+          onFocus={() => setFocused(true)}
+          onBlur={handleBlur}
+          placeholder={placeholder ?? '0'}
+          className="flex-1 bg-transparent py-2.5 font-serif font-light text-charcoal text-[15px] placeholder-charcoal/20 focus:outline-none min-w-0"
+        />
+        {suffix && <span className="pl-1.5 font-sans font-light text-charcoal/35 text-[13px] select-none">{suffix}</span>}
+      </div>
+    </div>
+  )
+}
+
+function ResultRow({ label, value, bold }: { label: string; value: string; bold?: boolean }) {
+  return (
+    <div className={`flex items-baseline justify-between py-3 border-b border-charcoal/8 last:border-0 ${bold ? '' : ''}`}>
+      <span className={`eyebrow ${bold ? 'text-charcoal/60' : 'text-charcoal/35'}`}>{label}</span>
+      <span className={`font-serif font-light tabular-nums ${bold ? 'text-charcoal text-[16px]' : 'text-charcoal/80 text-[14px]'}`}>
+        {value}
+      </span>
+    </div>
+  )
+}
+
+export default function DSCRCalculatorPage() {
+  const [loanAmount, setLoanAmount] = useState('500000')
+  const [interestRate, setInterestRate] = useState('7.500')
+  const [amortTerm, setAmortTerm] = useState('30')
+  const [monthlyIncome, setMonthlyIncome] = useState('3500')
+  const [monthlyInsurance, setMonthlyInsurance] = useState('150')
+  const [monthlyTaxes, setMonthlyTaxes] = useState('400')
+  const [monthlyHoa, setMonthlyHoa] = useState('0')
+
+  const results = useMemo(() => {
+    const principal = parseNum(loanAmount)
+    const annualRate = parseNum(interestRate)
+    const r = annualRate / 100 / 12
+    const n = parseNum(amortTerm) * 12
+    const income = parseNum(monthlyIncome)
+    const ins = parseNum(monthlyInsurance)
+    const tax = parseNum(monthlyTaxes)
+    const hoa = parseNum(monthlyHoa)
+    const expenses = ins + tax + hoa
+
+    let pi = 0
+    if (principal > 0 && r > 0 && n > 0) {
+      pi = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1)
+    } else if (principal > 0 && r === 0 && n > 0) {
+      pi = principal / n
+    }
+
+    const io = principal > 0 && r > 0 ? principal * r : 0
+
+    const totalPI = pi + expenses
+    const totalIO = io + expenses
+
+    const dscrPI = totalPI > 0 ? income / totalPI : 0
+    const dscrIO = totalIO > 0 ? income / totalIO : 0
+
+    return { pi, io, ins, tax, hoa, expenses, income, totalPI, totalIO, dscrPI, dscrIO }
+  }, [loanAmount, interestRate, amortTerm, monthlyIncome, monthlyInsurance, monthlyTaxes, monthlyHoa])
+
+  return (
+    <>
+      <Nav />
+
+      <div style={{ backgroundColor: '#F6F2EB' }}>
+
+        {/* ── Hero ── */}
+        <div className="border-b border-charcoal/8" style={{ backgroundColor: '#2a2520' }}>
+          <div className="relative z-10 container-xl pb-14 lg:pb-18" style={{ paddingTop: 'calc(72px + 3.5rem)' }}>
+            <nav className="flex items-center gap-2 mb-10" aria-label="Breadcrumb">
+              <Link href="/resources" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Resources</Link>
+              <span className="text-cream/20 text-[9px]">/</span>
+              <Link href="/resources#tools" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Tools</Link>
+            </nav>
+
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-end">
+              <div>
+                <p className="eyebrow text-cream/50 mb-4">DSCR Calculator</p>
+                <div className="h-px bg-cream/20 mb-6" />
+                <h1
+                  className="font-serif font-light italic text-cream leading-[1.2]"
+                  style={{ fontSize: 'clamp(26px, 3vw, 42px)' }}
+                >
+                  Qualify on rental income.<br />
+                  Not your tax returns.
+                </h1>
+              </div>
+              <div>
+                <p className="font-serif font-light text-cream/55" style={{ fontSize: 'clamp(14px, 1.05vw, 16px)', lineHeight: '1.85' }}>
+                  DSCR loans are qualified based on a property&apos;s cash flow, not personal income. Use this tool to estimate whether your investment property&apos;s rental income covers the debt service — and by how much.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Calculator ── */}
+        <div className="container-xl py-14 lg:py-20">
+          <div className="grid lg:grid-cols-[1fr_520px] xl:grid-cols-[1fr_560px] gap-10 lg:gap-16 items-start">
+
+            {/* ── Left: Inputs ── */}
+            <div className="space-y-12">
+
+              {/* Loan Details */}
+              <div>
+                <div className="flex items-center gap-5 mb-8">
+                  <p className="eyebrow text-charcoal/40">Loan Details</p>
+                  <div className="flex-1 h-px bg-charcoal/10" />
+                </div>
+                <div className="grid sm:grid-cols-3 gap-x-8 gap-y-7">
+                  <Field
+                    label="Loan Amount"
+                    value={loanAmount}
+                    onChange={setLoanAmount}
+                    prefix="$"
+                    placeholder="500,000"
+                    hint="$125K – $2M"
+                  />
+                  <Field
+                    label="Interest Rate"
+                    value={interestRate}
+                    onChange={setInterestRate}
+                    suffix="%"
+                    placeholder="7.500"
+                    format="rate"
+                  />
+                  <div>
+                    <div className="flex items-baseline justify-between mb-1.5">
+                      <label className="eyebrow text-charcoal/40">Amort. Term</label>
+                    </div>
+                    <div className="flex items-center gap-3 border-b border-charcoal/15 py-2.5 text-[15px]">
+                      <span aria-hidden className="font-serif text-[15px] w-0 overflow-hidden select-none opacity-0">&nbsp;</span>
+                      {[15, 20, 25, 30].map((yr) => (
+                        <button
+                          key={yr}
+                          onClick={() => setAmortTerm(String(yr))}
+                          className={`font-sans font-medium text-[10px] tracking-[0.18em] uppercase transition-all duration-200 ${
+                            amortTerm === String(yr)
+                              ? 'text-charcoal'
+                              : 'text-charcoal/30 hover:text-charcoal/60'
+                          }`}
+                        >
+                          {yr}yr
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Property Income & Expenses */}
+              <div>
+                <div className="flex items-center gap-5 mb-8">
+                  <p className="eyebrow text-charcoal/40">Monthly Income & Expenses</p>
+                  <div className="flex-1 h-px bg-charcoal/10" />
+                </div>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+                  <Field
+                    label="Monthly Rental Income"
+                    value={monthlyIncome}
+                    onChange={setMonthlyIncome}
+                    prefix="$"
+                    placeholder="3,500"
+                    hint="/MONTH"
+                  />
+                  <Field
+                    label="Property Insurance"
+                    value={monthlyInsurance}
+                    onChange={setMonthlyInsurance}
+                    prefix="$"
+                    placeholder="150"
+                    hint="/MONTH"
+                  />
+                  <Field
+                    label="Property Taxes"
+                    value={monthlyTaxes}
+                    onChange={setMonthlyTaxes}
+                    prefix="$"
+                    placeholder="400"
+                    hint="/MONTH"
+                  />
+                  <Field
+                    label="HOA Dues"
+                    value={monthlyHoa}
+                    onChange={setMonthlyHoa}
+                    prefix="$"
+                    placeholder="0"
+                    hint="/MONTH"
+                  />
+                </div>
+              </div>
+
+            </div>
+
+            {/* ── Right: Results ── */}
+            <div className="lg:sticky lg:top-[96px] space-y-4">
+
+              {/* Fully Amortizing */}
+              <div className="border border-charcoal/10 p-7 lg:p-8" style={{ backgroundColor: '#EBE5DC' }}>
+                <div className="flex items-center mb-6">
+                  <p className="eyebrow text-charcoal/35">Fully Amortizing</p>
+                  <span className="eyebrow text-charcoal/20 ml-2">P&amp;I</span>
+                  <DSCRBadge ratio={results.dscrPI} />
+                </div>
+
+                <div className="mb-5 pb-5 border-b border-charcoal/10">
+                  <p className="eyebrow text-charcoal/25 mb-2">DSCR Ratio</p>
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      className="font-serif font-light text-charcoal tabular-nums"
+                      style={{ fontSize: 'clamp(34px, 3.5vw, 48px)', letterSpacing: '-0.02em', lineHeight: 1 }}
+                    >
+                      {fmtRatio(results.dscrPI)}
+                    </span>
+                    {results.dscrPI > 0 && (
+                      <span className="font-serif font-light text-charcoal/35 text-[13px]">
+                        {results.dscrPI >= 1.25 ? '≥ 1.25 min' : results.dscrPI >= 1.0 ? '< 1.25 min' : '< 1.00'}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <ResultRow label="P&I Payment" value={fmtDollar(results.pi)} />
+                <ResultRow label="Insurance" value={fmtDollar(results.ins)} />
+                <ResultRow label="Taxes" value={fmtDollar(results.tax)} />
+                <ResultRow label="HOA Dues" value={fmtDollar(results.hoa)} />
+                <ResultRow label="Total Qualifying Payment" value={fmtDollar(results.totalPI)} bold />
+                <div className="mt-4 pt-4 border-t border-charcoal/10">
+                  <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
+                </div>
+              </div>
+
+              {/* Interest Only */}
+              <div className="border border-charcoal/10 p-7 lg:p-8" style={{ backgroundColor: '#EBE5DC' }}>
+                <div className="flex items-center mb-6">
+                  <p className="eyebrow text-charcoal/35">Interest Only</p>
+                  <span className="eyebrow text-charcoal/20 ml-2">IO</span>
+                  <DSCRBadge ratio={results.dscrIO} />
+                </div>
+
+                <div className="mb-5 pb-5 border-b border-charcoal/10">
+                  <p className="eyebrow text-charcoal/25 mb-2">DSCR Ratio</p>
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      className="font-serif font-light text-charcoal tabular-nums"
+                      style={{ fontSize: 'clamp(34px, 3.5vw, 48px)', letterSpacing: '-0.02em', lineHeight: 1 }}
+                    >
+                      {fmtRatio(results.dscrIO)}
+                    </span>
+                    {results.dscrIO > 0 && (
+                      <span className="font-serif font-light text-charcoal/35 text-[13px]">
+                        {results.dscrIO >= 1.25 ? '≥ 1.25 min' : results.dscrIO >= 1.0 ? '< 1.25 min' : '< 1.00'}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <ResultRow label="IO Payment" value={fmtDollar(results.io)} />
+                <ResultRow label="Insurance" value={fmtDollar(results.ins)} />
+                <ResultRow label="Taxes" value={fmtDollar(results.tax)} />
+                <ResultRow label="HOA Dues" value={fmtDollar(results.hoa)} />
+                <ResultRow label="Total Qualifying Payment" value={fmtDollar(results.totalIO)} bold />
+                <div className="mt-4 pt-4 border-t border-charcoal/10">
+                  <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
+                </div>
+              </div>
+
+              {/* Disclaimer */}
+              <p className="font-serif font-light text-charcoal/30 leading-relaxed" style={{ fontSize: '11px' }}>
+                This calculator is for illustrative purposes only and does not constitute a loan estimate, commitment to lend, or guarantee of terms. DSCR eligibility varies by lender and program. Minimum loan amount $125,000 · Maximum $2,000,000.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        {/* ── CTA ── */}
+        <div className="border-t border-charcoal/8" style={{ backgroundColor: '#EBE5DC' }}>
+          <div className="container-xl py-16 lg:py-20">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-center">
+              <div>
+                <p className="eyebrow text-charcoal/35 mb-4">Next Step</p>
+                <div className="h-px bg-charcoal/10 mb-6 w-10" />
+                <h2
+                  className="font-serif font-light italic text-charcoal leading-tight mb-5"
+                  style={{ fontSize: 'clamp(22px, 2.2vw, 32px)' }}
+                >
+                  Ready to structure your investment loan?
+                </h2>
+                <p
+                  className="font-serif font-light text-charcoal/50"
+                  style={{ fontSize: 'clamp(14px, 1.05vw, 15px)', lineHeight: '1.85' }}
+                >
+                  DSCR programs vary significantly across lenders. A consultation can help you identify the right structure, rate, and program for your property and goals.
+                </p>
+              </div>
+              <div className="flex lg:justify-end">
+                <a
+                  href="/#book"
+                  className="eyebrow px-10 py-4 border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-cream transition-all duration-400"
+                >
+                  Schedule a Consultation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+    </>
+  )
+}
