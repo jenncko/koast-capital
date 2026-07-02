@@ -35,18 +35,19 @@ function fmtRatio(n: number): string {
 
 function DSCRBadge({ ratio }: { ratio: number }) {
   if (ratio === 0 || !isFinite(ratio)) return null
-  const good = ratio >= 1.25
-  const borderline = ratio >= 1.0 && ratio < 1.25
+  const strong = ratio >= 1.20
+  const breakEven = ratio >= 1.0 && ratio < 1.20
+  const label = strong ? 'Strong' : breakEven ? 'Break Even' : 'Weak'
   return (
     <span
       className="font-sans font-medium text-[9px] tracking-[0.2em] uppercase px-2 py-0.5 border ml-2"
       style={{
-        color: good ? '#6b7a52' : borderline ? '#8a6a30' : '#8a3030',
-        borderColor: good ? '#a8b08e' : borderline ? '#c8a060' : '#c08080',
-        backgroundColor: good ? '#f0f3ea' : borderline ? '#f5edd8' : '#f5e8e8',
+        color: strong ? '#6b7a52' : breakEven ? '#8a6a30' : '#8a3030',
+        borderColor: strong ? '#a8b08e' : breakEven ? '#c8a060' : '#c08080',
+        backgroundColor: strong ? '#f0f3ea' : breakEven ? '#f5edd8' : '#f5e8e8',
       }}
     >
-      {good ? 'Eligible' : borderline ? 'Borderline' : 'Below Min'}
+      {label}
     </span>
   )
 }
@@ -225,7 +226,7 @@ export default function DSCRCalculatorPage() {
                   />
                   <div>
                     <div className="flex items-baseline justify-between mb-1.5">
-                      <label className="eyebrow text-charcoal/40">Amort. Term</label>
+                      <label className="eyebrow text-charcoal/40">Term</label>
                     </div>
                     <div className="flex items-center gap-3 border-b border-charcoal/15 py-2.5">
                       <span aria-hidden className="font-serif text-[15px] w-0 overflow-hidden select-none opacity-0">&nbsp;</span>
@@ -253,7 +254,7 @@ export default function DSCRCalculatorPage() {
                 </div>
                 <div className="space-y-6">
                   <Field
-                    label="Monthly Rental Income"
+                    label="Rental Income"
                     value={monthlyIncome}
                     onChange={setMonthlyIncome}
                     prefix="$"
@@ -261,7 +262,7 @@ export default function DSCRCalculatorPage() {
                     hint="/MONTH"
                   />
                   <Field
-                    label="Property Insurance"
+                    label="Homeowners Insurance"
                     value={monthlyInsurance}
                     onChange={setMonthlyInsurance}
                     prefix="$"
@@ -308,7 +309,7 @@ export default function DSCRCalculatorPage() {
                   </span>
                   {results.dscrPI > 0 && (
                     <span className="font-serif font-light text-charcoal/35 text-[12px]">
-                      {results.dscrPI >= 1.25 ? '≥ 1.25' : results.dscrPI >= 1.0 ? '< 1.25' : '< 1.00'}
+                      {results.dscrPI >= 1.20 ? '≥ 1.20' : results.dscrPI >= 1.0 ? '1.00 – 1.19' : '< 1.00'}
                     </span>
                   )}
                 </div>
@@ -343,7 +344,7 @@ export default function DSCRCalculatorPage() {
                   </span>
                   {results.dscrIO > 0 && (
                     <span className="font-serif font-light text-charcoal/35 text-[12px]">
-                      {results.dscrIO >= 1.25 ? '≥ 1.25' : results.dscrIO >= 1.0 ? '< 1.25' : '< 1.00'}
+                      {results.dscrIO >= 1.20 ? '≥ 1.20' : results.dscrIO >= 1.0 ? '1.00 – 1.19' : '< 1.00'}
                     </span>
                   )}
                 </div>
