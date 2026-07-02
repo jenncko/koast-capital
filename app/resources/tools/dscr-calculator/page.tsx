@@ -165,7 +165,7 @@ export default function DSCRCalculatorPage() {
       <div style={{ backgroundColor: '#F6F2EB', paddingTop: 0 }}>
 
         {/* ── Hero ── */}
-        <div className="relative border-b border-charcoal/8 overflow-hidden" style={{ backgroundColor: '#2a2520' }}>
+        <div className="relative border-b border-charcoal/8 overflow-hidden lg:min-h-[461px] flex flex-col justify-end" style={{ backgroundColor: '#2a2520' }}>
           <Image src="/images/dscr-calculator.png" alt="DSCR Calculator" fill priority className="object-cover object-center opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/15 to-black/5" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
