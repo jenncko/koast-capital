@@ -358,10 +358,6 @@ export default function DSCRCalculatorPage() {
                 <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
               </div>
 
-              {/* Disclaimer tucked under IO card */}
-              <p className="mt-5 pt-5 border-t border-charcoal/8 font-serif font-light text-charcoal/30 leading-relaxed" style={{ fontSize: '10px' }}>
-                For illustrative purposes only. Not a loan estimate or commitment to lend. Min $125K · Max $2M.
-              </p>
             </div>
 
           </div>
