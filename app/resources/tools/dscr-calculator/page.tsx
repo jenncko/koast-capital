@@ -169,7 +169,7 @@ export default function DSCRCalculatorPage() {
           <Image src="/images/dscr-calculator.png" alt="DSCR Calculator" fill priority className="object-cover object-center opacity-80" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/15 to-black/5" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
-          <div className="relative z-10 container-xl pb-8 lg:pb-10" style={{ paddingTop: 'calc(72px + 2.5rem)' }}>
+          <div className="relative z-10 container-xl pb-14 lg:pb-20" style={{ paddingTop: 'calc(72px + 3.5rem)' }}>
             <nav className="flex items-center gap-2 mb-6" aria-label="Breadcrumb">
               <Link href="/resources" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Resources</Link>
               <span className="text-cream/20 text-[9px]">/</span>
