@@ -164,48 +164,45 @@ export default function DSCRCalculatorPage() {
 
         {/* ── Hero ── */}
         <div className="border-b border-charcoal/8" style={{ backgroundColor: '#2a2520' }}>
-          <div className="relative z-10 container-xl pb-14 lg:pb-18" style={{ paddingTop: 'calc(72px + 3.5rem)' }}>
-            <nav className="flex items-center gap-2 mb-10" aria-label="Breadcrumb">
+          <div className="relative z-10 container-xl pb-8 lg:pb-10" style={{ paddingTop: 'calc(72px + 2rem)' }}>
+            <nav className="flex items-center gap-2 mb-6" aria-label="Breadcrumb">
               <Link href="/resources" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Resources</Link>
               <span className="text-cream/20 text-[9px]">/</span>
               <Link href="/resources#tools" className="eyebrow text-cream/40 hover:text-cream transition-colors duration-200">Tools</Link>
             </nav>
-
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-end">
+            <div className="flex items-end gap-10 justify-between">
               <div>
-                <p className="eyebrow text-cream/50 mb-4">DSCR Calculator</p>
-                <div className="h-px bg-cream/20 mb-6" />
+                <p className="eyebrow text-cream/50 mb-3">DSCR Calculator</p>
+                <div className="h-px bg-cream/20 mb-5" />
                 <h1
                   className="font-serif font-light italic text-cream leading-[1.2]"
-                  style={{ fontSize: 'clamp(26px, 3vw, 42px)' }}
+                  style={{ fontSize: 'clamp(22px, 2.5vw, 34px)' }}
                 >
                   Qualify on rental income.<br />
                   Not your tax returns.
                 </h1>
               </div>
-              <div>
-                <p className="font-serif font-light text-cream/55" style={{ fontSize: 'clamp(14px, 1.05vw, 16px)', lineHeight: '1.85' }}>
-                  DSCR loans are qualified based on a property&apos;s cash flow, not personal income. Use this tool to estimate whether your investment property&apos;s rental income covers the debt service — and by how much.
-                </p>
-              </div>
+              <p className="hidden lg:block font-serif font-light text-cream/45 max-w-sm" style={{ fontSize: '14px', lineHeight: '1.8' }}>
+                Estimate whether your property&apos;s rental income covers the debt service — and by how much.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* ── Calculator ── */}
-        <div className="container-xl py-14 lg:py-20">
-          <div className="grid lg:grid-cols-[1fr_520px] xl:grid-cols-[1fr_560px] gap-10 lg:gap-16 items-start">
+        {/* ── Calculator — 3 columns ── */}
+        <div className="container-xl py-10 lg:py-14">
+          <div className="grid lg:grid-cols-[1fr_1fr_1fr] gap-8 lg:gap-10 items-start">
 
-            {/* ── Left: Inputs ── */}
-            <div className="space-y-12">
+            {/* ── Col 1: Inputs ── */}
+            <div className="space-y-8">
 
               {/* Loan Details */}
               <div>
-                <div className="flex items-center gap-5 mb-8">
+                <div className="flex items-center gap-4 mb-6">
                   <p className="eyebrow text-charcoal/40">Loan Details</p>
                   <div className="flex-1 h-px bg-charcoal/10" />
                 </div>
-                <div className="grid sm:grid-cols-3 gap-x-8 gap-y-7">
+                <div className="space-y-6">
                   <Field
                     label="Loan Amount"
                     value={loanAmount}
@@ -226,16 +223,14 @@ export default function DSCRCalculatorPage() {
                     <div className="flex items-baseline justify-between mb-1.5">
                       <label className="eyebrow text-charcoal/40">Amort. Term</label>
                     </div>
-                    <div className="flex items-center gap-3 border-b border-charcoal/15 py-2.5 text-[15px]">
+                    <div className="flex items-center gap-3 border-b border-charcoal/15 py-2.5">
                       <span aria-hidden className="font-serif text-[15px] w-0 overflow-hidden select-none opacity-0">&nbsp;</span>
                       {[15, 20, 25, 30].map((yr) => (
                         <button
                           key={yr}
                           onClick={() => setAmortTerm(String(yr))}
                           className={`font-sans font-medium text-[10px] tracking-[0.18em] uppercase transition-all duration-200 ${
-                            amortTerm === String(yr)
-                              ? 'text-charcoal'
-                              : 'text-charcoal/30 hover:text-charcoal/60'
+                            amortTerm === String(yr) ? 'text-charcoal' : 'text-charcoal/30 hover:text-charcoal/60'
                           }`}
                         >
                           {yr}yr
@@ -246,13 +241,13 @@ export default function DSCRCalculatorPage() {
                 </div>
               </div>
 
-              {/* Property Income & Expenses */}
+              {/* Income & Expenses */}
               <div>
-                <div className="flex items-center gap-5 mb-8">
-                  <p className="eyebrow text-charcoal/40">Monthly Income & Expenses</p>
+                <div className="flex items-center gap-4 mb-6">
+                  <p className="eyebrow text-charcoal/40">Income & Expenses</p>
                   <div className="flex-1 h-px bg-charcoal/10" />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+                <div className="space-y-6">
                   <Field
                     label="Monthly Rental Income"
                     value={monthlyIncome}
@@ -290,85 +285,81 @@ export default function DSCRCalculatorPage() {
 
             </div>
 
-            {/* ── Right: Results ── */}
-            <div className="lg:sticky lg:top-[96px] space-y-4">
+            {/* ── Col 2: Fully Amortizing ── */}
+            <div className="lg:sticky lg:top-[96px] border border-charcoal/10 p-6 lg:p-7" style={{ backgroundColor: '#EBE5DC' }}>
+              <div className="flex items-center mb-5">
+                <p className="eyebrow text-charcoal/35">Fully Amortizing</p>
+                <span className="eyebrow text-charcoal/20 ml-2">P&amp;I</span>
+                <DSCRBadge ratio={results.dscrPI} />
+              </div>
 
-              {/* Fully Amortizing */}
-              <div className="border border-charcoal/10 p-7 lg:p-8" style={{ backgroundColor: '#EBE5DC' }}>
-                <div className="flex items-center mb-6">
-                  <p className="eyebrow text-charcoal/35">Fully Amortizing</p>
-                  <span className="eyebrow text-charcoal/20 ml-2">P&amp;I</span>
-                  <DSCRBadge ratio={results.dscrPI} />
-                </div>
-
-                <div className="mb-5 pb-5 border-b border-charcoal/10">
-                  <p className="eyebrow text-charcoal/25 mb-2">DSCR Ratio</p>
-                  <div className="flex items-baseline gap-3">
-                    <span
-                      className="font-serif font-light text-charcoal tabular-nums"
-                      style={{ fontSize: 'clamp(34px, 3.5vw, 48px)', letterSpacing: '-0.02em', lineHeight: 1 }}
-                    >
-                      {fmtRatio(results.dscrPI)}
+              <div className="mb-4 pb-4 border-b border-charcoal/10">
+                <p className="eyebrow text-charcoal/25 mb-2">DSCR Ratio</p>
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className="font-serif font-light text-charcoal tabular-nums"
+                    style={{ fontSize: 'clamp(30px, 2.8vw, 40px)', letterSpacing: '-0.02em', lineHeight: 1 }}
+                  >
+                    {fmtRatio(results.dscrPI)}
+                  </span>
+                  {results.dscrPI > 0 && (
+                    <span className="font-serif font-light text-charcoal/35 text-[12px]">
+                      {results.dscrPI >= 1.25 ? '≥ 1.25' : results.dscrPI >= 1.0 ? '< 1.25' : '< 1.00'}
                     </span>
-                    {results.dscrPI > 0 && (
-                      <span className="font-serif font-light text-charcoal/35 text-[13px]">
-                        {results.dscrPI >= 1.25 ? '≥ 1.25 min' : results.dscrPI >= 1.0 ? '< 1.25 min' : '< 1.00'}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <ResultRow label="P&I Payment" value={fmtDollar(results.pi)} />
-                <ResultRow label="Insurance" value={fmtDollar(results.ins)} />
-                <ResultRow label="Taxes" value={fmtDollar(results.tax)} />
-                <ResultRow label="HOA Dues" value={fmtDollar(results.hoa)} />
-                <ResultRow label="Total Qualifying Payment" value={fmtDollar(results.totalPI)} bold />
-                <div className="mt-4 pt-4 border-t border-charcoal/10">
-                  <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
+                  )}
                 </div>
               </div>
 
-              {/* Interest Only */}
-              <div className="border border-charcoal/10 p-7 lg:p-8" style={{ backgroundColor: '#EBE5DC' }}>
-                <div className="flex items-center mb-6">
-                  <p className="eyebrow text-charcoal/35">Interest Only</p>
-                  <span className="eyebrow text-charcoal/20 ml-2">IO</span>
-                  <DSCRBadge ratio={results.dscrIO} />
-                </div>
-
-                <div className="mb-5 pb-5 border-b border-charcoal/10">
-                  <p className="eyebrow text-charcoal/25 mb-2">DSCR Ratio</p>
-                  <div className="flex items-baseline gap-3">
-                    <span
-                      className="font-serif font-light text-charcoal tabular-nums"
-                      style={{ fontSize: 'clamp(34px, 3.5vw, 48px)', letterSpacing: '-0.02em', lineHeight: 1 }}
-                    >
-                      {fmtRatio(results.dscrIO)}
-                    </span>
-                    {results.dscrIO > 0 && (
-                      <span className="font-serif font-light text-charcoal/35 text-[13px]">
-                        {results.dscrIO >= 1.25 ? '≥ 1.25 min' : results.dscrIO >= 1.0 ? '< 1.25 min' : '< 1.00'}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <ResultRow label="IO Payment" value={fmtDollar(results.io)} />
-                <ResultRow label="Insurance" value={fmtDollar(results.ins)} />
-                <ResultRow label="Taxes" value={fmtDollar(results.tax)} />
-                <ResultRow label="HOA Dues" value={fmtDollar(results.hoa)} />
-                <ResultRow label="Total Qualifying Payment" value={fmtDollar(results.totalIO)} bold />
-                <div className="mt-4 pt-4 border-t border-charcoal/10">
-                  <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
-                </div>
+              <ResultRow label="P&I Payment" value={fmtDollar(results.pi)} />
+              <ResultRow label="Insurance" value={fmtDollar(results.ins)} />
+              <ResultRow label="Taxes" value={fmtDollar(results.tax)} />
+              <ResultRow label="HOA Dues" value={fmtDollar(results.hoa)} />
+              <ResultRow label="Total Qualifying Pmt" value={fmtDollar(results.totalPI)} bold />
+              <div className="mt-3 pt-3 border-t border-charcoal/10">
+                <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
               </div>
-
-              {/* Disclaimer */}
-              <p className="font-serif font-light text-charcoal/30 leading-relaxed" style={{ fontSize: '11px' }}>
-                This calculator is for illustrative purposes only and does not constitute a loan estimate, commitment to lend, or guarantee of terms. DSCR eligibility varies by lender and program. Minimum loan amount $125,000 · Maximum $2,000,000.
-              </p>
-
             </div>
+
+            {/* ── Col 3: Interest Only ── */}
+            <div className="lg:sticky lg:top-[96px] border border-charcoal/10 p-6 lg:p-7" style={{ backgroundColor: '#EBE5DC' }}>
+              <div className="flex items-center mb-5">
+                <p className="eyebrow text-charcoal/35">Interest Only</p>
+                <span className="eyebrow text-charcoal/20 ml-2">IO</span>
+                <DSCRBadge ratio={results.dscrIO} />
+              </div>
+
+              <div className="mb-4 pb-4 border-b border-charcoal/10">
+                <p className="eyebrow text-charcoal/25 mb-2">DSCR Ratio</p>
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className="font-serif font-light text-charcoal tabular-nums"
+                    style={{ fontSize: 'clamp(30px, 2.8vw, 40px)', letterSpacing: '-0.02em', lineHeight: 1 }}
+                  >
+                    {fmtRatio(results.dscrIO)}
+                  </span>
+                  {results.dscrIO > 0 && (
+                    <span className="font-serif font-light text-charcoal/35 text-[12px]">
+                      {results.dscrIO >= 1.25 ? '≥ 1.25' : results.dscrIO >= 1.0 ? '< 1.25' : '< 1.00'}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <ResultRow label="IO Payment" value={fmtDollar(results.io)} />
+              <ResultRow label="Insurance" value={fmtDollar(results.ins)} />
+              <ResultRow label="Taxes" value={fmtDollar(results.tax)} />
+              <ResultRow label="HOA Dues" value={fmtDollar(results.hoa)} />
+              <ResultRow label="Total Qualifying Pmt" value={fmtDollar(results.totalIO)} bold />
+              <div className="mt-3 pt-3 border-t border-charcoal/10">
+                <ResultRow label="Monthly Rental Income" value={fmtDollar(results.income)} />
+              </div>
+
+              {/* Disclaimer tucked under IO card */}
+              <p className="mt-5 pt-5 border-t border-charcoal/8 font-serif font-light text-charcoal/30 leading-relaxed" style={{ fontSize: '10px' }}>
+                For illustrative purposes only. Not a loan estimate or commitment to lend. Min $125K · Max $2M.
+              </p>
+            </div>
+
           </div>
         </div>
 
