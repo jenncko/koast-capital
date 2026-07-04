@@ -967,6 +967,7 @@ const articles: Article[] = [
     excerpt: 'Jumbo loans come with greater flexibility — and greater scrutiny. Understanding how lenders evaluate reserves, income, and documentation can mean the difference between a smooth close and a frustrating one.',
     categories: ['Jumbo', 'Professionals'],
     gradient: 'linear-gradient(135deg, #d0ccc4 0%, #908880 100%)',
+    image: '/images/resources-19.png',
     readTime: '7 min read',
     date: 'July 3, 2026',
     featured: false,
